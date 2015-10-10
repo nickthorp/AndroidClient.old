@@ -14,10 +14,15 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_main">MainActivity</string>
-
+    <string name="title_activity_main">Main Activity</string>
+    <string name="title_fragment_home">Home</string>
+    <string name="title_fragment_books">Books</string>
+    <string name="title_fragment_video_games">Video Games</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

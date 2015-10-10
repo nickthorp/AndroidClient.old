@@ -2,9 +2,9 @@ package com.indstudy.nicholas.thegarage;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,9 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private String mTitle;
+    private FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, HomeFragment.newInstance()).commit();
     }
 
     @Override
@@ -80,17 +87,19 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camara) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, HomeFragment.newInstance()).commit();
+        } else if (id == R.id.nav_video_games) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_music) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_books) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_movies) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_comics) {
 
         }
 
@@ -98,4 +107,27 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    //Get the title of current fragment
+    public void onSectionAttached(int number) {
+        System.out.println(mTitle);
+        switch (number) {
+            case 1:
+                mTitle = getString(R.string.title_fragment_home);
+                updateActionBar();
+                break;
+            case 2:
+                mTitle = getString(R.string.title_fragment_books);
+                break;
+            case 3:
+                mTitle = getString(R.string.title_fragment_video_games);
+                break;
+        }
+    }
+
+    public void updateActionBar(){
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(mTitle);
+    }
+
 }
