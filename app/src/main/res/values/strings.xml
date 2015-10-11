@@ -12,16 +12,32 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+        completions."</string>
     <!-- Strings for Activity and fragment ActionBar titles -->
     <string name="title_activity_main">Main Activity</string>
     <string name="title_fragment_home">Home</string>
     <string name="title_fragment_books">Books</string>
+    <string name="title_fragment_music">Music</string>
     <string name="title_fragment_video_games">Video Games</string>
+    <string name="title_fragment_comics">Comics &amp; Graphic Novels</string>
+    <string name="title_fragment_tt_games">Tabletop Games</string>
+    <string name="title_fragment_movies_tv">Movies &amp; TV Series</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_home_placeholder">Hello! You\'re in the Home Fragment!</string>
+    <string name="fragment_books_placeholder">Hello! You\'re in the Books Fragment!</string>
+    <string name="fragment_music_placeholder">Hello! You\'re in the Music Fragment!</string>
+    <string name="fragment_video_games_placeholder">
+        Hello! You\'re in the Video Games Fragment!</string>
+    <string name="fragment_movies_tv_placeholder">
+        Hello! You\'re in the Movies &amp; TV Fragment!</string>
+    <string name="fragment_comics_placeholder">
+        Hello! You\'re in the Comics and Graphic Novels Fragment!</string>
+    <string name="fragment_tt_games_placeholder">
+        Hello! You\'re in the Tabletop Games Fragment!</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

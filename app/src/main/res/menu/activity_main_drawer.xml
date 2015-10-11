@@ -3,17 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_home"
-            android:title="Home" />
+            android:title="@string/title_fragment_home" />
         <item android:id="@+id/nav_books" android:icon="@android:drawable/ic_menu_agenda"
-            android:title="Books" />
+            android:title="@string/title_fragment_books" />
         <item android:id="@+id/nav_music" android:icon="@android:drawable/ic_menu_zoom"
-            android:title="Music" />
+            android:title="@string/title_fragment_music" />
         <item android:id="@+id/nav_video_games" android:icon="@android:drawable/ic_menu_compass"
-            android:title="Video games" />
+            android:title="@string/title_fragment_video_games" />
         <item android:id="@+id/nav_movies" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Movies &amp; TV" />
+            android:title="@string/title_fragment_movies_tv" />
         <item android:id="@+id/nav_comics" android:icon="@android:drawable/ic_menu_search"
-            android:title="Comics &amp; Graphic Novels" />
+            android:title="@string/title_fragment_comics" />
+        <item android:id="@+id/nav_tt_games"
+            android:title="@string/title_fragment_tt_games" />
     </group>
 
     <item android:title="Communicate">
