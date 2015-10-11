@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
             fragmentManager.beginTransaction()
                     .replace(R.id.container, HomeFragment.newInstance()).commit();
         } else if (id == R.id.nav_video_games) {
@@ -96,7 +95,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_music) {
 
         } else if (id == R.id.nav_books) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, BooksFragment.newInstance()).commit();
         } else if (id == R.id.nav_movies) {
 
         } else if (id == R.id.nav_comics) {
@@ -112,15 +112,17 @@ public class MainActivity extends AppCompatActivity
     public void onSectionAttached(int number) {
         System.out.println(mTitle);
         switch (number) {
-            case 1:
+            case R.id.nav_home:
                 mTitle = getString(R.string.title_fragment_home);
                 updateActionBar();
                 break;
-            case 2:
+            case R.id.nav_books:
                 mTitle = getString(R.string.title_fragment_books);
+                updateActionBar();
                 break;
-            case 3:
+            case R.id.nav_video_games:
                 mTitle = getString(R.string.title_fragment_video_games);
+                updateActionBar();
                 break;
         }
     }
