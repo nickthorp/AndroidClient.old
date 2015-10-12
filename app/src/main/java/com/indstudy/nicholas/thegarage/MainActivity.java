@@ -92,16 +92,23 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, HomeFragment.newInstance()).commit();
         } else if (id == R.id.nav_video_games) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, VideoGamesFragment.newInstance()).commit();
         } else if (id == R.id.nav_music) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, MusicFragment.newInstance()).commit();
         } else if (id == R.id.nav_books) {
             fragmentManager.beginTransaction()
                     .replace(R.id.container, BooksFragment.newInstance()).commit();
         } else if (id == R.id.nav_movies) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, MoviesTVFragment.newInstance()).commit();
         } else if (id == R.id.nav_comics) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, ComicsFragment.newInstance()).commit();
+        } else if (id == R.id.nav_tt_games) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, TableTopFragment.newInstance()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -123,6 +130,22 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_video_games:
                 mTitle = getString(R.string.title_fragment_video_games);
+                updateActionBar();
+                break;
+            case R.id.nav_music:
+                mTitle = getString(R.string.title_fragment_music);
+                updateActionBar();
+                break;
+            case R.id.nav_movies:
+                mTitle = getString(R.string.title_fragment_movies_tv);
+                updateActionBar();
+                break;
+            case R.id.nav_comics:
+                mTitle = getString(R.string.title_fragment_comics);
+                updateActionBar();
+                break;
+            case R.id.nav_tt_games:
+                mTitle = getString(R.string.title_fragment_tt_games);
                 updateActionBar();
                 break;
         }
