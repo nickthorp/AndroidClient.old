@@ -2,6 +2,8 @@
     <string name="app_name">TheGarage</string>
     
     <!-- Strings related to login -->
+    <string name="text_view_login">Please Sign in!</string>
+    <string name="text_view_register">First time here!? Please register!</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
@@ -26,9 +28,18 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Strings related to Home -->
+    <string name="fragment_home_welcome">Welcome, </string>
+    <string name="fragment_home_welcome1">You\'re in the Home Fragment!</string>
+    <string name="home_btn_label">Manage Profile</string>
+
+    <!-- Strings related to Books -->
+    <string name="books_btn_label">Open Library</string>
+    <string name="fragment_books_welcome">Welcome,</string>
+    <string name="fragment_books_welcome1">to your library!</string>
+
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="fragment_home_placeholder">Hello! You\'re in the Home Fragment!</string>
-    <string name="fragment_books_placeholder">Hello! You\'re in the Books Fragment!</string>
+
     <string name="fragment_music_placeholder">Hello! You\'re in the Music Fragment!</string>
     <string name="fragment_video_games_placeholder">
         Hello! You\'re in the Video Games Fragment!</string>
@@ -38,5 +49,7 @@
         Hello! You\'re in the Comics and Graphic Novels Fragment!</string>
     <string name="fragment_tt_games_placeholder">
         Hello! You\'re in the Tabletop Games Fragment!</string>
+
+    <string name="logo_desc">The Garage Logo</string>
 
 </resources>

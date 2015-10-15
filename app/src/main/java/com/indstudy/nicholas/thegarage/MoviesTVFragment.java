@@ -29,8 +29,7 @@ public class MoviesTVFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static MoviesTVFragment newInstance() {
-        MoviesTVFragment fragment = new MoviesTVFragment();
-        return fragment;
+        return new MoviesTVFragment();
     }
 
     public MoviesTVFragment() {

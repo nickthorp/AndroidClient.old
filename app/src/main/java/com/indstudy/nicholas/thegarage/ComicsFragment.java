@@ -29,8 +29,7 @@ public class ComicsFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static ComicsFragment newInstance() {
-        ComicsFragment fragment = new ComicsFragment();
-        return fragment;
+        return new ComicsFragment();
     }
 
     public ComicsFragment() {

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -18,6 +19,8 @@ import android.view.ViewGroup;
  */
 public class HomeFragment extends Fragment {
 
+    private User user;
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -26,8 +29,7 @@ public class HomeFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-        return fragment;
+        return new HomeFragment();
     }
 
     public HomeFragment() {
@@ -37,13 +39,18 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = new User();
+        user.setUserName("Nick!");  // TODO: Provide real username fetching logic
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        TextView textView = (TextView) view.findViewById(R.id.fragment_home_textView);
+        textView.setText(user.getUserName());
+        return view;
     }
 
     @Override

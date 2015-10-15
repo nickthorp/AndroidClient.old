@@ -29,8 +29,7 @@ public class VideoGamesFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static VideoGamesFragment newInstance() {
-        VideoGamesFragment fragment = new VideoGamesFragment();
-        return fragment;
+        return new VideoGamesFragment();
     }
 
     public VideoGamesFragment() {

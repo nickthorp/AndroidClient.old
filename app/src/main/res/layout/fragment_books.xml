@@ -5,8 +5,21 @@
     android:layout_height="match_parent"
     tools:context="com.indstudy.nicholas.thegarage.BooksFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/fragment_books_placeholder" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_books_welcome"
+            android:layout_gravity="top" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_books_welcome1"
+            android:layout_gravity="top" />
+    </LinearLayout>
+    <Button android:id="@+id/button_books" style="?android:textAppearanceSmall"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/books_btn_label"
+        android:layout_gravity="center_horizontal|bottom" />
 
 </FrameLayout>

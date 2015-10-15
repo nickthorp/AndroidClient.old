@@ -29,8 +29,7 @@ public class TableTopFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static TableTopFragment newInstance() {
-        TableTopFragment fragment = new TableTopFragment();
-        return fragment;
+        return new TableTopFragment();
     }
 
     public TableTopFragment() {

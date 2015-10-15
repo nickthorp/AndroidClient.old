@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -87,30 +88,23 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (id == R.id.nav_home) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, HomeFragment.newInstance()).commit();
+            transaction.replace(R.id.container, HomeFragment.newInstance());
         } else if (id == R.id.nav_video_games) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, VideoGamesFragment.newInstance()).commit();
+            transaction.replace(R.id.container, VideoGamesFragment.newInstance());
         } else if (id == R.id.nav_music) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, MusicFragment.newInstance()).commit();
+            transaction.replace(R.id.container, MusicFragment.newInstance());
         } else if (id == R.id.nav_books) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, BooksFragment.newInstance()).commit();
+            transaction.replace(R.id.container, BooksFragment.newInstance());
         } else if (id == R.id.nav_movies) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, MoviesTVFragment.newInstance()).commit();
+            transaction.replace(R.id.container, MoviesTVFragment.newInstance());
         } else if (id == R.id.nav_comics) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, ComicsFragment.newInstance()).commit();
+            transaction.replace(R.id.container, ComicsFragment.newInstance());
         } else if (id == R.id.nav_tt_games) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, TableTopFragment.newInstance()).commit();
+            transaction.replace(R.id.container, TableTopFragment.newInstance());
         }
-
+        transaction.addToBackStack(null).commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -118,7 +112,6 @@ public class MainActivity extends AppCompatActivity
 
     //Get the title of current fragment
     public void onSectionAttached(int number) {
-        System.out.println(mTitle);
         switch (number) {
             case R.id.nav_home:
                 mTitle = getString(R.string.title_fragment_home);
@@ -153,7 +146,9 @@ public class MainActivity extends AppCompatActivity
 
     public void updateActionBar(){
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(mTitle);
+        if (actionBar != null) {
+            actionBar.setTitle(mTitle);
+        }
     }
 
 }

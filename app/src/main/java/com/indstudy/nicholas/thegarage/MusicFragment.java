@@ -28,8 +28,7 @@ public class MusicFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static MusicFragment newInstance() {
-        MusicFragment fragment = new MusicFragment();
-        return fragment;
+        return new MusicFragment();
     }
 
     public MusicFragment() {
