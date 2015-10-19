@@ -6,6 +6,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import com.indstudy.nicholas.thegarage.TablesObjects.Book;
+
+import java.util.List;
 
 
 /**
@@ -15,6 +21,8 @@ import android.view.ViewGroup;
  */
 public class BooksFragment extends Fragment {
 
+    private List<Book> books;
+    private ListAdapter mListAdapter;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -34,13 +42,20 @@ public class BooksFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        books.add(new Book("The Fellowship of the Ring", "J.R.R. Tolkien"));
+        books.add(new Book("The Martian Chronicles","Ray Bradbury"));
+        books.add(new Book("Slaughter House-Five","Kurt Vonnegut"));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_books, container, false);
+        View view = inflater.inflate(R.layout.fragment_books, container, false);
+        ListView listView = (ListView)view.findViewById(R.id.books_listView);
+        //mListAdapter = new SimpleAdapter(books);  TODO: Create adapter
+        listView.getAdapter();
+        return view;
     }
 
     @Override

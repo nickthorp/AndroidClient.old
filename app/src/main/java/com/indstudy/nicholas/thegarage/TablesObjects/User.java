@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage;
+package com.indstudy.nicholas.thegarage.TablesObjects;
 
 /**
  * Created by Nicholas on 10/15/2015.
