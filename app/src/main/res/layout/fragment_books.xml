@@ -18,6 +18,10 @@
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="@string/fragment_books_welcome1"
             android:layout_gravity="top" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
         <ListView android:id="@+id/books_listView"
             android:layout_width="145dp"
             android:layout_height="0dp"

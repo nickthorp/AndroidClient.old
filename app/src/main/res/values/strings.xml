@@ -37,6 +37,9 @@
     <string name="books_btn_label">Open Library</string>
     <string name="fragment_books_welcome">Welcome,</string>
     <string name="fragment_books_welcome1">to your library!</string>
+    <string name="fragment_books_summary">Summary</string>
+    <string name="fragment_books_total">Total: </string>
+    <string name="fragment_books_IP">Reading: </string>
 
 <!-- TODO: Remove or change this placeholder text -->
 
