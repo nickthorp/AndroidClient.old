@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -22,7 +23,7 @@ import java.util.List;
 public class BooksFragment extends Fragment {
 
     private List<Book> books;
-    private ListAdapter mListAdapter;
+    private ArrayAdapter<String> mListAdapter;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -53,8 +54,8 @@ public class BooksFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_books, container, false);
         ListView listView = (ListView)view.findViewById(R.id.books_listView);
-        //mListAdapter = new SimpleAdapter(books);  TODO: Create adapter
-        listView.getAdapter();
+        mListAdapter = new ArrayAdapter<>(getContext(), R.layout.fragment_books);
+        listView.setAdapter(mListAdapter);
         return view;
     }
 
