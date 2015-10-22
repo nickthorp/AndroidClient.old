@@ -40,6 +40,7 @@
     <string name="fragment_books_summary">Summary</string>
     <string name="fragment_books_total">Total: </string>
     <string name="fragment_books_IP">Reading: </string>
+    <string name="fragment_books_listLabel">Your List:</string>
 
 <!-- TODO: Remove or change this placeholder text -->
 
@@ -54,5 +55,4 @@
         Hello! You\'re in the Tabletop Games Fragment!</string>
 
     <string name="logo_desc">The Garage Logo</string>
-
 </resources>

@@ -8,11 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.indstudy.nicholas.thegarage.TablesObjects.Book;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -22,8 +22,9 @@ import java.util.List;
  */
 public class BooksFragment extends Fragment {
 
-    private List<Book> books;
+    private ArrayList<Book> books;
     private ArrayAdapter mListAdapter;
+    private TextView textViewTotal, textViewIP;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -58,6 +59,10 @@ public class BooksFragment extends Fragment {
         ListView listView = (ListView)view.findViewById(R.id.books_listView);
         mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item_1, R.id.empty_textView, books);
         listView.setAdapter(mListAdapter);
+        textViewTotal = (TextView) view.findViewById(R.id.books_total_text_view);
+        textViewTotal.setText(Integer.toString(books.size()));
+        textViewIP = (TextView) view.findViewById(R.id.books_IP_text_view);
+        textViewIP.setText("");
         return view;
     }
 
