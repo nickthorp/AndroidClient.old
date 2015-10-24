@@ -42,6 +42,15 @@
     <string name="fragment_books_IP">Reading: </string>
     <string name="fragment_books_listLabel">Your List:</string>
 
+    <!-- Strings related to Comics -->
+    <string name="comics_btn_label">Open Library</string>
+    <string name="fragment_comics_welcome">Welcome,</string>
+    <string name="fragment_comics_welcome1">to your library!</string>
+    <string name="fragment_comics_summary">Summary</string>
+    <string name="fragment_comics_total">Total: </string>
+    <string name="fragment_comics_IP">Reading: </string>
+    <string name="fragment_comics_listLabel">Your List:</string>
+
 <!-- TODO: Remove or change this placeholder text -->
 
     <string name="fragment_music_placeholder">Hello! You\'re in the Music Fragment!</string>
@@ -55,4 +64,6 @@
         Hello! You\'re in the Tabletop Games Fragment!</string>
 
     <string name="logo_desc">The Garage Logo</string>
+    <string name="placeholder_user_icon">User Icon</string>
+    <string name="empty_field">-</string>
 </resources>

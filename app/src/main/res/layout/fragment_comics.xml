@@ -1,10 +1,66 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.indstudy.nicholas.thegarage.ComicsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/fragment_comics_placeholder" />
-
+    <LinearLayout
+        android:layout_width="187dp" android:layout_height="wrap_content"
+        android:paddingTop="16dp" android:orientation="vertical"
+        android:layout_gravity="center_horizontal" android:weightSum="1">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_comics_welcome"
+            android:layout_gravity="top" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_comics_welcome1"
+            android:layout_gravity="top" />
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingTop="16dp" android:paddingBottom="16dp"
+            android:text="@string/fragment_comics_summary" />
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_comics_total" />
+            <TextView android:id="@+id/comics_total_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_comics_IP" />
+            <TextView android:id="@+id/comics_IP_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingTop="16dp" android:paddingBottom="16dp"
+            android:text="@string/fragment_comics_listLabel" />
+        <ListView android:id="@+id/comics_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="32dp" />
+    </LinearLayout>
+    <Button android:id="@+id/button_comics" style="?android:textAppearanceSmall"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/comics_btn_label"
+        android:layout_gravity="center_horizontal|bottom" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp" android:paddingStart="16dp"
+        android:id="@+id/comics_user_image"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="left|top"
+        android:contentDescription="User Icon" />
 </FrameLayout>
