@@ -38,8 +38,8 @@
     <string name="fragment_books_welcome">Welcome,</string>
     <string name="fragment_books_welcome1">to your library!</string>
     <string name="fragment_books_summary">Summary</string>
-    <string name="fragment_books_total">Total: </string>
-    <string name="fragment_books_IP">Reading: </string>
+    <string name="fragment_books_total">Total:  </string>
+    <string name="fragment_books_IP">Reading:  </string>
     <string name="fragment_books_listLabel">Your List:</string>
 
     <!-- Strings related to Comics -->
@@ -47,19 +47,24 @@
     <string name="fragment_comics_welcome">Welcome,</string>
     <string name="fragment_comics_welcome1">to your library!</string>
     <string name="fragment_comics_summary">Summary</string>
-    <string name="fragment_comics_total">Total: </string>
-    <string name="fragment_comics_IP">Reading: </string>
+    <string name="fragment_comics_total">Total:  </string>
+    <string name="fragment_comics_IP">Reading:  </string>
     <string name="fragment_comics_listLabel">Your List:</string>
+
+    <!-- Strings related to Movies & TV -->
+    <string name="movie_tv_btn_label">Open Library</string>
+    <string name="fragment_movie_tv_welcome">Welcome,</string>
+    <string name="fragment_movie_tv_welcome1">to your library!</string>
+    <string name="fragment_movie_tv_summary">Summary</string>
+    <string name="fragment_movie_tv_total">Total:  </string>
+    <string name="fragment_movie_tv_IP">Reading:  </string>
+    <string name="fragment_movie_tv_listLabel">Your List:</string>
 
 <!-- TODO: Remove or change this placeholder text -->
 
     <string name="fragment_music_placeholder">Hello! You\'re in the Music Fragment!</string>
     <string name="fragment_video_games_placeholder">
         Hello! You\'re in the Video Games Fragment!</string>
-    <string name="fragment_movies_tv_placeholder">
-        Hello! You\'re in the Movies &amp; TV Fragment!</string>
-    <string name="fragment_comics_placeholder">
-        Hello! You\'re in the Comics and Graphic Novels Fragment!</string>
     <string name="fragment_tt_games_placeholder">
         Hello! You\'re in the Tabletop Games Fragment!</string>
 

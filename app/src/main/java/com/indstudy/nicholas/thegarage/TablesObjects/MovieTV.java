@@ -17,6 +17,12 @@ public class MovieTV {
         this.director = director;
     }
 
+    public MovieTV(String title, String director, int releaseYear){
+        this.title = title;
+        this.director = director;
+        this.releaseYear = releaseYear;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -55,5 +61,9 @@ public class MovieTV {
 
     public void setIsWatching(Boolean isWatching) {
         this.isWatching = isWatching;
+    }
+
+    public String toString(){
+        return title + " (" + releaseYear + ")";
     }
 }
