@@ -33,8 +33,7 @@ public class BooksFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static BooksFragment newInstance() {
-        BooksFragment fragment = new BooksFragment();
-        return fragment;
+        return new BooksFragment();
     }
 
     public BooksFragment() {

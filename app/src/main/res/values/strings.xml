@@ -60,14 +60,34 @@
     <string name="fragment_movie_tv_IP">Reading:  </string>
     <string name="fragment_movie_tv_listLabel">Your List:</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- Strings related to Music -->
+    <string name="music_btn_label">Open Library</string>
+    <string name="fragment_music_welcome">Welcome,</string>
+    <string name="fragment_music_welcome1">to your library!</string>
+    <string name="fragment_music_summary">Summary</string>
+    <string name="fragment_music_total">Total:  </string>
+    <string name="fragment_music_IP">Reading:  </string>
+    <string name="fragment_music_listLabel">Your List:</string>
 
-    <string name="fragment_music_placeholder">Hello! You\'re in the Music Fragment!</string>
-    <string name="fragment_video_games_placeholder">
-        Hello! You\'re in the Video Games Fragment!</string>
-    <string name="fragment_tt_games_placeholder">
-        Hello! You\'re in the Tabletop Games Fragment!</string>
+    <!-- Strings related to Video Games -->
+    <string name="video_games_btn_label">Open Library</string>
+    <string name="fragment_video_games_welcome">Welcome,</string>
+    <string name="fragment_video_games_welcome1">to your library!</string>
+    <string name="fragment_video_games_summary">Summary</string>
+    <string name="fragment_video_games_total">Total:  </string>
+    <string name="fragment_video_games_IP">Reading:  </string>
+    <string name="fragment_video_games_listLabel">Your List:</string>
 
+    <!-- Strings related to Table Top -->
+    <string name="table_top_btn_label">Open Library</string>
+    <string name="fragment_table_top_welcome">Welcome,</string>
+    <string name="fragment_table_top_welcome1">to your library!</string>
+    <string name="fragment_table_top_summary">Summary</string>
+    <string name="fragment_table_top_total">Total:  </string>
+    <string name="fragment_table_top_IP">Reading:  </string>
+    <string name="fragment_table_top_listLabel">Your List:</string>
+
+    <!-- Extraneous labels -->
     <string name="logo_desc">The Garage Logo</string>
     <string name="placeholder_user_icon">User Icon</string>
     <string name="empty_field">-</string>

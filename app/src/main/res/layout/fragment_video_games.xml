@@ -2,9 +2,64 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.indstudy.nicholas.thegarage.VideoGamesFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/fragment_video_games_placeholder" />
-
+    <LinearLayout
+        android:layout_width="187dp" android:layout_height="wrap_content"
+        android:paddingTop="16dp" android:orientation="vertical"
+        android:layout_gravity="center_horizontal" android:weightSum="1">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_video_games_welcome"
+            android:layout_gravity="top" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_video_games_welcome1"
+            android:layout_gravity="top" />
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingTop="16dp" android:paddingBottom="16dp"
+            android:text="@string/fragment_video_games_summary" />
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_video_games_total" />
+            <TextView android:id="@+id/video_games_total_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_field" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_video_games_IP" />
+            <TextView android:id="@+id/video_games_IP_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_field" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingTop="16dp" android:paddingBottom="16dp"
+            android:text="@string/fragment_video_games_listLabel" />
+        <ListView android:id="@+id/video_games_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="32dp" />
+    </LinearLayout>
+    <Button android:id="@+id/button_video_games" style="?android:textAppearanceSmall"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/video_games_btn_label"
+        android:layout_gravity="center_horizontal|bottom" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp" android:paddingStart="16dp"
+        android:id="@+id/video_games_user_image"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="left|top"
+        android:contentDescription="@string/placeholder_user_icon" />
 </FrameLayout>

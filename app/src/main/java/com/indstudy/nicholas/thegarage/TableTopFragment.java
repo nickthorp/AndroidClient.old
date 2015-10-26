@@ -7,6 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.indstudy.nicholas.thegarage.TablesObjects.TableTopGame;
+
+import java.util.ArrayList;
 
 
 /**
@@ -18,7 +25,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class TableTopFragment extends Fragment {
-
+    private ArrayList<TableTopGame> tableTopGames;
+    private ArrayAdapter mListAdapter;
+    private TextView textViewTotal, textViewIP;
     private OnFragmentInteractionListener mListener;
 
     /**
@@ -39,13 +48,25 @@ public class TableTopFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        tableTopGames = new ArrayList<>();
+        tableTopGames.add(new TableTopGame("Quelf"));
+        tableTopGames.add(new TableTopGame("Apples to Apples"));
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_table_top, container, false);
+        View view = inflater.inflate(R.layout.fragment_table_top, container, false);
+        ListView listView = (ListView)view.findViewById(R.id.table_top_listView);
+        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item_1, R.id.empty_textView, tableTopGames);
+        listView.setAdapter(mListAdapter);
+        textViewTotal = (TextView) view.findViewById(R.id.table_top_total_text_view);
+        textViewTotal.setText(Integer.toString(tableTopGames.size()));
+        textViewIP = (TextView) view.findViewById(R.id.table_top_IP_text_view);
+        textViewIP.setText("");
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

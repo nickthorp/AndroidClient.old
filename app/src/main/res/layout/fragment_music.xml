@@ -2,9 +2,64 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.indstudy.nicholas.thegarage.MusicFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/fragment_music_placeholder" />
-
+    <LinearLayout
+        android:layout_width="187dp" android:layout_height="wrap_content"
+        android:paddingTop="16dp" android:orientation="vertical"
+        android:layout_gravity="center_horizontal" android:weightSum="1">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_music_welcome"
+            android:layout_gravity="top" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/fragment_music_welcome1"
+            android:layout_gravity="top" />
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingTop="16dp" android:paddingBottom="16dp"
+            android:text="@string/fragment_music_summary" />
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_music_total" />
+            <TextView android:id="@+id/music_total_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_field" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_music_IP" />
+            <TextView android:id="@+id/music_IP_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_field" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingTop="16dp" android:paddingBottom="16dp"
+            android:text="@string/fragment_music_listLabel" />
+        <ListView android:id="@+id/music_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="32dp" />
+    </LinearLayout>
+    <Button android:id="@+id/button_music" style="?android:textAppearanceSmall"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/music_btn_label"
+        android:layout_gravity="center_horizontal|bottom" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp" android:paddingStart="16dp"
+        android:id="@+id/music_user_image"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="left|top"
+        android:contentDescription="@string/placeholder_user_icon" />
 </FrameLayout>
