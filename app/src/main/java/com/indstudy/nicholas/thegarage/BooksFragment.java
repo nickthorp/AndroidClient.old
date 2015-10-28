@@ -44,9 +44,10 @@ public class BooksFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         books = new ArrayList<>();
-        books.add(new Book("The Fellowship of the Ring", "J.R.R. Tolkien"));
-        books.add(new Book("The Martian Chronicles","Ray Bradbury"));
-        books.add(new Book("Slaughter House-Five", "Kurt Vonnegut"));
+        MainActivity ma = (MainActivity)getActivity();
+        books.add(new Book(1, ma.user.getEmail(), "The Fellowship of the Ring"));
+        books.add(new Book(2, ma.user.getEmail(), "The Martian Chronicles"));
+        books.add(new Book(3, ma.user.getEmail(), "Slaughter House-Five"));
     }
 
     @Override

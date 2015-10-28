@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.indstudy.nicholas.thegarage.TablesObjects.User;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +16,6 @@ import com.indstudy.nicholas.thegarage.TablesObjects.User;
  */
 public class HomeFragment extends Fragment {
 
-    private User user;
 
     /**
      * Use this factory method to create a new instance of
@@ -38,8 +35,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = new User();
-        user.setUserName("Nick!");  // TODO: Provide real username fetching logic
     }
 
     @Override
@@ -48,7 +43,8 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         TextView textView = (TextView) view.findViewById(R.id.fragment_home_textView);
-        textView.setText(user.getUserName());
+        MainActivity ma = (MainActivity)getActivity();
+        textView.setText(ma.user.getFirstName());
         return view;
     }
 

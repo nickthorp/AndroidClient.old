@@ -1,5 +1,6 @@
 package com.indstudy.nicholas.thegarage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,16 +16,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.indstudy.nicholas.thegarage.TablesObjects.User;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private String mTitle;
+    private String mEmail;
+    public User user;
     private FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        mEmail = bundle.getString("user email");
+        user = new User();
+        user.setEmail(mEmail);
+        user.setFirstName("Nick");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

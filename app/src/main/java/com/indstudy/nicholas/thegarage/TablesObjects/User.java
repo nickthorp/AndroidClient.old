@@ -1,5 +1,7 @@
 package com.indstudy.nicholas.thegarage.TablesObjects;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nicholas on 10/15/2015.
  */
@@ -8,7 +10,14 @@ public class User {
     private String firstName;
     private String lastName;
     private String userName;
-//    private List<Friend> friends;  TODO: Add in Friend class
+//    private ArrayList<Friend> friends;  TODO: Add in Friend class
+    private ArrayList<Book> books;
+    private ArrayList<Comic> comics;
+    private ArrayList<MovieTV> shows;
+    private ArrayList<Music> music;
+    private ArrayList<TableTopGame> tableTopGames;
+    private ArrayList<VideoGame> videoGames;
+
 
     public User(){
     }

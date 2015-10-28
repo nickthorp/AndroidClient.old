@@ -4,17 +4,26 @@ package com.indstudy.nicholas.thegarage.TablesObjects;
  * Created by Nicholas on 10/19/2015.
  */
 public class Book {
+    private int itemId;
+    private String userEmail;
     private String title;
     private String author;
+    private String publisher;
+    private int edition;
+    private String isbn;
     private Format format;
+    private Boolean isRead;
     private Boolean isReading;
 
     public Book(){
     }
 
-    public Book(String title, String author){
+    public Book(int itemId, String userEmail, String title){
+        this.itemId = itemId;
+        this.userEmail = userEmail;
         this.title = title;
-        this.author = author;
+        this.isReading = false;
+        this.isRead = false;
     }
 
     public Book(String title, String author, Format format, Boolean isReading){
@@ -22,6 +31,22 @@ public class Book {
         this.author = author;
         this.format = format;
         this.isReading = isReading;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getTitle() {
@@ -44,8 +69,40 @@ public class Book {
         return format;
     }
 
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getEdition() {
+        return edition;
+    }
+
+    public void setEdition(int edition) {
+        this.edition = edition;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
     public void setFormat(Format format) {
         this.format = format;
+    }
+
+    public Boolean getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(Boolean isRead) {
+        this.isRead = isRead;
     }
 
     public Boolean getIsReading() {
@@ -57,6 +114,6 @@ public class Book {
     }
 
     public String toString(){
-        return title + " by " + author;
+        return title + " by " + (author != null ? author : "Unknown");
     }
 }
