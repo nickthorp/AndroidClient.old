@@ -92,4 +92,16 @@
     <string name="placeholder_user_icon">User Icon</string>
     <string name="empty_field">-</string>
     <string name="title_activity_add_item">AddItemActivity</string>
+
+    <!-- Strings for Add Item Spinner -->
+    <string-array name="add_item_spinner_list">
+        <item>Select item type &#8230;</item>
+        <item>Book</item>
+        <item>Comic/Graphic Novel</item>
+        <item>Movie/TV Show</item>
+        <item>Music</item>
+        <item>Tabletop Game</item>
+        <item>Video Game</item>
+    </string-array>
+
 </resources>
