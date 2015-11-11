@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage;
+package com.indstudy.nicholas.thegarage.MainFragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -11,7 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.indstudy.nicholas.thegarage.TablesObjects.MovieTV;
+import com.indstudy.nicholas.thegarage.LibraryObjects.Platform;
+import com.indstudy.nicholas.thegarage.LibraryObjects.VideoGame;
+import com.indstudy.nicholas.thegarage.MainActivity;
+import com.indstudy.nicholas.thegarage.R;
 
 import java.util.ArrayList;
 
@@ -19,14 +22,13 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MoviesTVFragment.OnFragmentInteractionListener} interface
+ * {@link VideoGamesFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MoviesTVFragment#newInstance} factory method to
+ * Use the {@link VideoGamesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MoviesTVFragment extends Fragment {
-
-    private ArrayList<MovieTV> movieTVList;
+public class VideoGamesFragment extends Fragment {
+    private ArrayList<VideoGame> videoGames;
     private ArrayAdapter mListAdapter;
     private TextView textViewTotal, textViewIP;
     private OnFragmentInteractionListener mListener;
@@ -35,36 +37,36 @@ public class MoviesTVFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment MoviesTVFragment.
+     * @return A new instance of fragment VideoGamesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MoviesTVFragment newInstance() {
-        return new MoviesTVFragment();
+    public static VideoGamesFragment newInstance() {
+        return new VideoGamesFragment();
     }
 
-    public MoviesTVFragment() {
+    public VideoGamesFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        movieTVList = new ArrayList<>();
-        movieTVList.add(new MovieTV("Star Wars VII: The Force Awakens", "JJ Abrams", 2015));
-        movieTVList.add(new MovieTV("Star Wars IV: A New Hope", "George Lucas", 1975));
+        videoGames = new ArrayList<>();
+        videoGames.add(new VideoGame("Final Fantasy", Platform.PC));
+        videoGames.add(new VideoGame("Call of Duty", Platform.PS3));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_movies_tv, container, false);
-        ListView listView = (ListView)view.findViewById(R.id.movie_tv_listView);
-        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item_1, R.id.empty_textView, movieTVList);
+        View view = inflater.inflate(R.layout.fragment_video_games, container, false);
+        ListView listView = (ListView)view.findViewById(R.id.video_games_listView);
+        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item, R.id.empty_textView, videoGames);
         listView.setAdapter(mListAdapter);
-        textViewTotal = (TextView) view.findViewById(R.id.movie_tv_total_text_view);
-        textViewTotal.setText(Integer.toString(movieTVList.size()));
-        textViewIP = (TextView) view.findViewById(R.id.movie_tv_IP_text_view);
+        textViewTotal = (TextView) view.findViewById(R.id.video_games_total_text_view);
+        textViewTotal.setText(Integer.toString(videoGames.size()));
+        textViewIP = (TextView) view.findViewById(R.id.video_games_IP_text_view);
         textViewIP.setText("");
         return view;
     }
@@ -79,7 +81,7 @@ public class MoviesTVFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(R.id.nav_movies);
+        ((MainActivity) activity).onSectionAttached(R.id.nav_video_games);
     }
 
     @Override

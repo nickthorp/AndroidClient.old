@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage.TablesObjects;
+package com.indstudy.nicholas.thegarage.LibraryObjects;
 
 import android.media.Image;
 

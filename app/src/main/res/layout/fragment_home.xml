@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.indstudy.nicholas.thegarage.HomeFragment">
+    tools:context="com.indstudy.nicholas.thegarage.MainFragments.HomeFragment">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
     <Button android:id="@+id/button_books" style="?android:textAppearanceSmall"
-        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_width="200dp" android:layout_height="wrap_content"
         android:text="@string/books_btn_label"
         android:layout_gravity="center_horizontal|bottom" />
 </FrameLayout>

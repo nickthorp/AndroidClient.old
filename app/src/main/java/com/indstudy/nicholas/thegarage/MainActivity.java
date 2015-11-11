@@ -1,6 +1,7 @@
 package com.indstudy.nicholas.thegarage;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -16,7 +17,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.indstudy.nicholas.thegarage.TablesObjects.User;
+import com.indstudy.nicholas.thegarage.HttpClasses.AddItemActivity;
+import com.indstudy.nicholas.thegarage.LibraryObjects.User;
+import com.indstudy.nicholas.thegarage.MainFragments.*;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         mEmail = bundle.getString("user email");
         user = new User();
@@ -43,8 +52,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //       .setAction("Action", null).show();
+                Intent intent1 = new Intent(MainActivity.this, AddItemActivity.class);
+                startActivity(intent1);
             }
         });
 
@@ -59,6 +70,11 @@ public class MainActivity extends AppCompatActivity
 
         fragmentManager.beginTransaction()
                 .replace(R.id.container, HomeFragment.newInstance()).commit();
+        try {
+            new HttpASyncTask().execute(new URL("http://localhost:8080/TheArchive/"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -162,4 +178,31 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public static String GET(URL url){
+        InputStream inputStream = null;
+        String result = "";
+        HttpURLConnection httpURLConnection = null;
+        try {
+            httpURLConnection = (HttpURLConnection)url.openConnection();
+            httpURLConnection.setRequestMethod("GET");
+            inputStream = httpURLConnection.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            int data = inputStreamReader.read();
+            while (data != -1){
+                char temp = (char) data;
+                result += temp;
+                data = inputStreamReader.read();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private class HttpASyncTask extends AsyncTask<URL, Void, String> {
+        @Override
+        protected String doInBackground(URL... urls) {
+            return GET(urls[0]);
+        }
+    }
 }

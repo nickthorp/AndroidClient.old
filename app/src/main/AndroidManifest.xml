@@ -31,6 +31,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.indstudy.nicholas.thegarage.LoginActivity" />
         </activity>
+        <activity
+            android:name=".HttpClasses.AddItemActivity"
+            android:label="@string/title_activity_add_item"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.indstudy.nicholas.thegarage.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

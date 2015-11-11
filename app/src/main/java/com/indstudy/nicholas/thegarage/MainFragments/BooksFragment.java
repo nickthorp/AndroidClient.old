@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage;
+package com.indstudy.nicholas.thegarage.MainFragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.indstudy.nicholas.thegarage.TablesObjects.Book;
+import com.indstudy.nicholas.thegarage.LibraryObjects.Book;
+import com.indstudy.nicholas.thegarage.MainActivity;
+import com.indstudy.nicholas.thegarage.R;
 
 import java.util.ArrayList;
 
@@ -56,7 +58,7 @@ public class BooksFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_books, container, false);
         ListView listView = (ListView)view.findViewById(R.id.books_listView);
-        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item_1, R.id.empty_textView, books);
+        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item, R.id.empty_textView, books);
         listView.setAdapter(mListAdapter);
         textViewTotal = (TextView) view.findViewById(R.id.books_total_text_view);
         textViewTotal.setText(Integer.toString(books.size()));

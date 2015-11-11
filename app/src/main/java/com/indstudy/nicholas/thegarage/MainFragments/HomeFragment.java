@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage;
+package com.indstudy.nicholas.thegarage.MainFragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.indstudy.nicholas.thegarage.MainActivity;
+import com.indstudy.nicholas.thegarage.R;
 
 
 /**

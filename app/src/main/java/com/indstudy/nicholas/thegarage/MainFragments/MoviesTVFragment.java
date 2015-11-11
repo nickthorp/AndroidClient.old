@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage;
+package com.indstudy.nicholas.thegarage.MainFragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -11,7 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.indstudy.nicholas.thegarage.TablesObjects.TableTopGame;
+import com.indstudy.nicholas.thegarage.LibraryObjects.MovieTV;
+import com.indstudy.nicholas.thegarage.MainActivity;
+import com.indstudy.nicholas.thegarage.R;
 
 import java.util.ArrayList;
 
@@ -19,13 +21,14 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TableTopFragment.OnFragmentInteractionListener} interface
+ * {@link MoviesTVFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TableTopFragment#newInstance} factory method to
+ * Use the {@link MoviesTVFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TableTopFragment extends Fragment {
-    private ArrayList<TableTopGame> tableTopGames;
+public class MoviesTVFragment extends Fragment {
+
+    private ArrayList<MovieTV> movieTVList;
     private ArrayAdapter mListAdapter;
     private TextView textViewTotal, textViewIP;
     private OnFragmentInteractionListener mListener;
@@ -34,37 +37,36 @@ public class TableTopFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment TableTopFragment.
+     * @return A new instance of fragment MoviesTVFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TableTopFragment newInstance() {
-        return new TableTopFragment();
+    public static MoviesTVFragment newInstance() {
+        return new MoviesTVFragment();
     }
 
-    public TableTopFragment() {
+    public MoviesTVFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tableTopGames = new ArrayList<>();
-        tableTopGames.add(new TableTopGame("Quelf"));
-        tableTopGames.add(new TableTopGame("Apples to Apples"));
-
+        movieTVList = new ArrayList<>();
+        movieTVList.add(new MovieTV("Star Wars VII: The Force Awakens", "JJ Abrams", 2015));
+        movieTVList.add(new MovieTV("Star Wars IV: A New Hope", "George Lucas", 1975));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_table_top, container, false);
-        ListView listView = (ListView)view.findViewById(R.id.table_top_listView);
-        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item_1, R.id.empty_textView, tableTopGames);
+        View view = inflater.inflate(R.layout.fragment_movies_tv, container, false);
+        ListView listView = (ListView)view.findViewById(R.id.movie_tv_listView);
+        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item, R.id.empty_textView, movieTVList);
         listView.setAdapter(mListAdapter);
-        textViewTotal = (TextView) view.findViewById(R.id.table_top_total_text_view);
-        textViewTotal.setText(Integer.toString(tableTopGames.size()));
-        textViewIP = (TextView) view.findViewById(R.id.table_top_IP_text_view);
+        textViewTotal = (TextView) view.findViewById(R.id.movie_tv_total_text_view);
+        textViewTotal.setText(Integer.toString(movieTVList.size()));
+        textViewIP = (TextView) view.findViewById(R.id.movie_tv_IP_text_view);
         textViewIP.setText("");
         return view;
     }
@@ -79,7 +81,7 @@ public class TableTopFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(R.id.nav_tt_games);
+        ((MainActivity) activity).onSectionAttached(R.id.nav_movies);
     }
 
     @Override
