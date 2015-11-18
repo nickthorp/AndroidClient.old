@@ -91,7 +91,7 @@
     <string name="logo_desc">The Garage Logo</string>
     <string name="placeholder_user_icon">User Icon</string>
     <string name="empty_field">-</string>
-    <string name="title_activity_add_item">AddItemActivity</string>
+    <string name="title_activity_add_item">Add Item</string>
 
     <!-- Strings for Add Item Spinner -->
     <string-array name="add_item_spinner_list">
@@ -103,5 +103,14 @@
         <item>Tabletop Game</item>
         <item>Video Game</item>
     </string-array>
+
+    <!-- Strings for Item addition forms -->
+    <string name="prompt_title">Title</string>
+    <string name="prompt_author">Author</string>
+    <string name="prompt_publisher">Publisher</string>
+    <string name="prompt_isbn">ISBN</string>
+    <string name="prompt_format">Format</string>
+    <string name="prompt_is_read">Completed: </string>
+    <string name="prompt_is_reading">In Progress: </string>
 
 </resources>

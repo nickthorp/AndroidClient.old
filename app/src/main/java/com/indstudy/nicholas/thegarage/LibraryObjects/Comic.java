@@ -7,7 +7,7 @@ public class Comic {
     private String title;
     private String author;
     private String artist;
-    private Format format;
+    private BookFormat format;
     private Boolean isReading;
 
     public Comic(){
@@ -18,7 +18,7 @@ public class Comic {
         this.author = author;
     }
 
-    public Comic(String title, String author, Format format, Boolean isReading){
+    public Comic(String title, String author, BookFormat format, Boolean isReading){
         this.title = title;
         this.author = author;
         this.format = format;
@@ -41,11 +41,11 @@ public class Comic {
         this.author = author;
     }
 
-    public Format getFormat() {
+    public BookFormat getFormat() {
         return format;
     }
 
-    public void setFormat(Format format) {
+    public void setFormat(BookFormat format) {
         this.format = format;
     }
 

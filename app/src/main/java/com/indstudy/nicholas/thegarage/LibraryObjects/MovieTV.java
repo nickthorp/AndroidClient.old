@@ -7,7 +7,7 @@ public class MovieTV {
     private String title;
     private int releaseYear;
     private String director;
-    private Format format;
+    private BookFormat format;
     private Boolean isWatching;
 
     public MovieTV(){}
@@ -47,11 +47,11 @@ public class MovieTV {
         this.director = director;
     }
 
-    public Format getFormat() {
+    public BookFormat getFormat() {
         return format;
     }
 
-    public void setFormat(Format format) {
+    public void setFormat(BookFormat format) {
         this.format = format;
     }
 
