@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.indstudy.nicholas.thegarage.LibraryObjects.MovieTV;
+import com.indstudy.nicholas.thegarage.LibraryObjects.Movie;
 import com.indstudy.nicholas.thegarage.MainActivity;
 import com.indstudy.nicholas.thegarage.R;
 
@@ -28,7 +28,7 @@ import java.util.ArrayList;
  */
 public class MoviesTVFragment extends Fragment {
 
-    private ArrayList<MovieTV> movieTVList;
+    private ArrayList<Movie> movieTVList;
     private ArrayAdapter mListAdapter;
     private TextView textViewTotal, textViewIP;
     private OnFragmentInteractionListener mListener;
@@ -52,8 +52,12 @@ public class MoviesTVFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         movieTVList = new ArrayList<>();
-        movieTVList.add(new MovieTV("Star Wars VII: The Force Awakens", "JJ Abrams", 2015));
-        movieTVList.add(new MovieTV("Star Wars IV: A New Hope", "George Lucas", 1975));
+        Movie movie1, movie2;
+        movie1 = new Movie(); movie2 = new Movie();
+        movie1.setTitle("Star Wars VII: The Force Awakens"); movie1.setReleaseYear(2015);
+        movie2.setTitle("Star Wars IV: A New Hope"); movie2.setReleaseYear(1975);
+        movieTVList.add(movie1);
+        movieTVList.add(movie2);
     }
 
     @Override

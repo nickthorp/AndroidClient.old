@@ -4,10 +4,15 @@ package com.indstudy.nicholas.thegarage.LibraryObjects;
  * Created by Nicholas on 10/23/2015.
  */
 public class Comic {
+    private int itemId;
+    private String userEmail;
     private String title;
     private String author;
     private String artist;
-    private BookFormat format;
+    private String volume;
+    private String publisher;
+    private PrintFormat format;
+    private Boolean isRead;
     private Boolean isReading;
 
     public Comic(){
@@ -18,7 +23,7 @@ public class Comic {
         this.author = author;
     }
 
-    public Comic(String title, String author, BookFormat format, Boolean isReading){
+    public Comic(String title, String author, PrintFormat format, Boolean isReading){
         this.title = title;
         this.author = author;
         this.format = format;
@@ -41,11 +46,11 @@ public class Comic {
         this.author = author;
     }
 
-    public BookFormat getFormat() {
+    public PrintFormat getFormat() {
         return format;
     }
 
-    public void setFormat(BookFormat format) {
+    public void setFormat(PrintFormat format) {
         this.format = format;
     }
 
@@ -67,5 +72,45 @@ public class Comic {
 
     public String toString(){
         return title + " by " + author;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public Boolean getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(Boolean isRead) {
+        this.isRead = isRead;
     }
 }

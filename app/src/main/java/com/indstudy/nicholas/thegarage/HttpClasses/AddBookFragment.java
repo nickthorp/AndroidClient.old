@@ -1,6 +1,5 @@
 package com.indstudy.nicholas.thegarage.HttpClasses;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,7 +13,7 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 
 import com.indstudy.nicholas.thegarage.LibraryObjects.Book;
-import com.indstudy.nicholas.thegarage.LibraryObjects.BookFormat;
+import com.indstudy.nicholas.thegarage.LibraryObjects.PrintFormat;
 import com.indstudy.nicholas.thegarage.R;
 
 /**
@@ -29,7 +28,6 @@ public class AddBookFragment extends Fragment implements Jsonable, AddItemActivi
     private AutoCompleteTextView mPublisherTextView, mIsbnTextView;
     private CheckBox mIsRead, mIsReading;
     private Spinner formatSpinner;
-    Activity activity;
 
     /**
      * Use this factory method to create a new instance of
@@ -37,12 +35,8 @@ public class AddBookFragment extends Fragment implements Jsonable, AddItemActivi
      *
      * @return A new instance of fragment AddBookFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static AddBookFragment newInstance() {
-        AddBookFragment fragment = new AddBookFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+        return new AddBookFragment();
     }
 
     public AddBookFragment() {
@@ -66,28 +60,30 @@ public class AddBookFragment extends Fragment implements Jsonable, AddItemActivi
         mIsRead = (CheckBox)view.findViewById(R.id.add_book_read_checkbox);
         mIsReading = (CheckBox)view.findViewById(R.id.add_book_reading_checkbox);
         formatSpinner = (Spinner)view.findViewById(R.id.add_book_format_spinner);
-        formatSpinner.setAdapter(new ArrayAdapter<BookFormat>(view.getContext(), android.R.layout.simple_spinner_item, BookFormat.values()));
+        formatSpinner.setAdapter(new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, PrintFormat.values()));
         return view;
     }
-
+/*
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = activity;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
     }
-
+*/
     private Book createBook(){
         Book book = new Book();
+        book.setItemId(333);
+        book.setUserEmail("foo@example.com");
         book.setTitle(mTitleTextView.getText().toString());
         book.setAuthor(mAuthorTextView.getText().toString());
         book.setPublisher(mPublisherTextView.getText().toString());
         book.setIsbn(mIsbnTextView.getText().toString());
-        book.setFormat((BookFormat) formatSpinner.getSelectedItem());
+        book.setEdition(1);
+        book.setFormat((PrintFormat) formatSpinner.getSelectedItem());
         book.setIsRead(mIsRead.isActivated());
         book.setIsReading(mIsReading.isActivated());
         return book;

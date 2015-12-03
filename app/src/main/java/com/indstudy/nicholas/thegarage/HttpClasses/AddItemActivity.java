@@ -1,6 +1,7 @@
 package com.indstudy.nicholas.thegarage.HttpClasses;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
 import com.indstudy.nicholas.thegarage.Items;
-import com.indstudy.nicholas.thegarage.MainFragments.TableTopFragment;
 import com.indstudy.nicholas.thegarage.R;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class AddItemActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -45,9 +51,14 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
             public void onClick(View view) {
                 try{
                     json = ((OnSubmitButtonClickedListener)mFragment).onSubmitClicked();
+                    try {
+                        new HttpASyncTask().execute(buildUrl());
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
                     Toast.makeText(getApplicationContext(), json, Toast.LENGTH_LONG).show();
                 }catch (ClassCastException cce){
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                    cce.printStackTrace();
                 }
             }
         });
@@ -116,9 +127,11 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
             case 1: mFragment = AddBookFragment.newInstance();
                 fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
                 break;
-            case 2:
+            case 2: mFragment = AddComicFragment.newInstance();
+                fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
                 break;
-            case 3:
+            case 3: mFragment = AddMovieTvFragment.newInstance();
+                fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
                 break;
             case 4:
                 break;
@@ -140,6 +153,60 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public interface OnSubmitButtonClickedListener{
-        public String onSubmitClicked();
+        String onSubmitClicked();
     }
+
+    private URL buildUrl() throws MalformedURLException {
+        String BASE_URL = "http://10.0.2.2:8080/TheArchive/";
+        String type = null;
+        switch (itemType){
+            case BOOK: type = "books";
+                break;
+            case COMIC: type = "comics";
+                break;
+            case MOVIETV: type = "moviestv";
+                break;
+            case MUSIC: type = "music";
+                break;
+            case TABLETOP: type = "tabletops";
+                break;
+            case VIDEOGAME: type = "videogames";
+        }
+        return new URL(BASE_URL + type);
+    }
+
+    private String Post(URL url){
+        StringBuilder result = new StringBuilder();
+        HttpURLConnection httpURLConnection = null;
+        try{
+            httpURLConnection = (HttpURLConnection)url.openConnection();
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+            httpURLConnection.setRequestProperty("Content-Type", "application/json");
+            httpURLConnection.setRequestMethod("PUT");
+            //httpURLConnection.connect();
+            OutputStreamWriter oWriter = new OutputStreamWriter(httpURLConnection.getOutputStream());
+            oWriter.write(json);
+            //oWriter.flush();
+            oWriter.close();
+            //InputStream inputStream =
+            httpURLConnection.getInputStream();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (httpURLConnection != null) {
+                httpURLConnection.disconnect();
+            }
+        }
+        return result.toString();
+    }
+
+    private class HttpASyncTask extends AsyncTask<URL, Void, String> {
+        @Override
+        protected String doInBackground(URL... urls) {
+            return Post(urls[0]);
+        }
+    }
+
 }

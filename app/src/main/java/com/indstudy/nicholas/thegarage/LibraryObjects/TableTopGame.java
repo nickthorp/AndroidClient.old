@@ -4,7 +4,7 @@ package com.indstudy.nicholas.thegarage.LibraryObjects;
  * Created by Nicholas on 10/24/2015.
  */
 public class TableTopGame {
-    private String gameTitle;
+    private String title;
     private int minPlayers;
     private int maxPlayers;
     private TableTopStyle style;
@@ -13,15 +13,15 @@ public class TableTopGame {
     }
 
     public TableTopGame(String gameTitle) {
-        this.gameTitle = gameTitle;
+        this.title = gameTitle;
     }
 
     public String getGameTitle() {
-        return gameTitle;
+        return title;
     }
 
     public void setGameTitle(String gameTitle) {
-        this.gameTitle = gameTitle;
+        this.title = gameTitle;
     }
 
     public int getMinPlayers() {
@@ -49,6 +49,6 @@ public class TableTopGame {
     }
 
     public String toString(){
-        return gameTitle;
+        return title;
     }
 }

@@ -9,9 +9,9 @@ public class Book {
     private String title;
     private String author;
     private String publisher;
-    //private int edition;
+    private int edition;
     private String isbn;
-    private BookFormat format;
+    private PrintFormat format;
     private Boolean isRead;
     private Boolean isReading;
     private String link;
@@ -27,7 +27,7 @@ public class Book {
         this.isRead = false;
     }
 
-    public Book(String title, String author, BookFormat format, Boolean isReading){
+    public Book(String title, String author, PrintFormat format, Boolean isReading){
         this.title = title;
         this.author = author;
         this.format = format;
@@ -66,7 +66,7 @@ public class Book {
         this.author = author;
     }
 
-    public BookFormat getFormat() {
+    public PrintFormat getFormat() {
         return format;
     }
 
@@ -78,7 +78,6 @@ public class Book {
         this.publisher = publisher;
     }
 
-    /*
     public int getEdition() {
 
         return edition;
@@ -87,7 +86,6 @@ public class Book {
     public void setEdition(int edition) {
         this.edition = edition;
     }
-    */
 
     public String getIsbn() {
         return isbn;
@@ -97,7 +95,7 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public void setFormat(BookFormat format) {
+    public void setFormat(PrintFormat format) {
         this.format = format;
     }
 

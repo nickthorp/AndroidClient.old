@@ -50,10 +50,6 @@
             android:layout_height="match_parent"
             android:paddingBottom="32dp" />
     </LinearLayout>
-    <Button android:id="@+id/button_comics" style="?android:textAppearanceSmall"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="@string/comics_btn_label"
-        android:layout_gravity="center_horizontal|bottom" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

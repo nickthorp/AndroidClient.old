@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, HomeFragment.newInstance()).commit();
         try {
-            new HttpASyncTask().execute(new URL("http://localhost:8080/TheArchive/"));
+            new HttpASyncTask().execute(new URL("http://10.0.2.2:8080/TheArchive/books"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

@@ -13,7 +13,7 @@ public class User {
 //    private ArrayList<Friend> friends;  TODO: Add in Friend class
     private ArrayList<Book> books;
     private ArrayList<Comic> comics;
-    private ArrayList<MovieTV> shows;
+    private ArrayList<Movie> shows;
     private ArrayList<Music> music;
     private ArrayList<TableTopGame> tableTopGames;
     private ArrayList<VideoGame> videoGames;
