@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity
                 Intent intent1 = new Intent(MainActivity.this, AddItemActivity.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("title", mTitle);
+                bundle1.putString("email", mEmail);
                 intent1.putExtras(bundle1);
                 startActivity(intent1);
             }

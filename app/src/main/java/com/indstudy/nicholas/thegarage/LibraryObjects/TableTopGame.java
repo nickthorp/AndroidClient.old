@@ -6,6 +6,8 @@ import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.TableTopFormat
  * Created by Nicholas on 10/24/2015.
  */
 public class TableTopGame {
+    private int itemId;
+    private String userEmail;
     private String title;
     private int minPlayers;
     private int maxPlayers;
@@ -52,5 +54,21 @@ public class TableTopGame {
 
     public String toString(){
         return title;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

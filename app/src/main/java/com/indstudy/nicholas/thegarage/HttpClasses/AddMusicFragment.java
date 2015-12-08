@@ -26,6 +26,7 @@ public class AddMusicFragment extends Fragment implements Jsonable, AddItemActiv
     private AutoCompleteTextView mAlbumTitleTextView, mArtistTextView;
     private Spinner mFormatSpinner;
     private CheckBox mListeningCheckbox;
+    private AddItemActivity parentActivity;
 
     public AddMusicFragment() {
         // Required empty public constructor
@@ -44,6 +45,7 @@ public class AddMusicFragment extends Fragment implements Jsonable, AddItemActiv
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        parentActivity = (AddItemActivity)getActivity();
     }
 
     @Override
@@ -71,6 +73,7 @@ public class AddMusicFragment extends Fragment implements Jsonable, AddItemActiv
 
     private Music createMusic(){
         Music music = new Music();
+        music.setUserEmail(parentActivity.mEmail);
         music.setAlbumTitle(mAlbumTitleTextView.getText().toString());
         music.setArtistName(mArtistTextView.getText().toString());
         music.setIsListening(mListeningCheckbox.isActivated());

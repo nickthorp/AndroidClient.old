@@ -10,6 +10,8 @@ import java.util.ArrayList;
  * Created by Nicholas on 10/24/2015.
  */
 public class Music {
+    private int itemId;
+    private String userEmail;
     private String artistName;
     private String albumTitle;
     //private ArrayList<String> songTitles;
@@ -80,5 +82,21 @@ public class Music {
 
     public void setFormat(AudioFormat format) {
         this.format = format;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

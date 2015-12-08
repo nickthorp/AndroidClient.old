@@ -29,6 +29,7 @@ public class AddVideoGameFragment extends Fragment implements Jsonable, AddItemA
     private AutoCompleteTextView mTitleTextView, mDeveloperTextView;
     private Spinner mFormatSpinner;
     private CheckBox mPlayed, mPlaying, mCompleted;
+    private AddItemActivity parentActivity;
 
     public AddVideoGameFragment() {
         // Required empty public constructor
@@ -47,6 +48,7 @@ public class AddVideoGameFragment extends Fragment implements Jsonable, AddItemA
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        parentActivity = (AddItemActivity)getActivity();
     }
 
     @Override
@@ -77,6 +79,7 @@ public class AddVideoGameFragment extends Fragment implements Jsonable, AddItemA
 
     private VideoGame createVideoGame(){
         VideoGame videoGame = new VideoGame();
+        videoGame.setUserEmail(parentActivity.mEmail);
         videoGame.setTitle(mTitleTextView.getText().toString());
         videoGame.setDeveloper(mDeveloperTextView.getText().toString());
         videoGame.setFormat((VideoGameFormat)mFormatSpinner.getSelectedItem());

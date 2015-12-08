@@ -28,6 +28,7 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
 
     private Items itemType;
     private String mTitle, json;
+    protected String mEmail;
     private final String[] titles = {"Home", "Books", "Comics & Graphic Novels", "Movies & TV Series",
             "Music", "Tabletop Games", "Video Games"};
     private Spinner spinner;
@@ -45,6 +46,7 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         mTitle = bundle.getString("title");
+        mEmail = bundle.getString("email");
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

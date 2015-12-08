@@ -1,5 +1,6 @@
 package com.indstudy.nicholas.thegarage.HttpClasses;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class AddBookFragment extends Fragment implements Jsonable, AddItemActivi
     private AutoCompleteTextView mPublisherTextView, mIsbnTextView;
     private CheckBox mIsRead, mIsReading;
     private Spinner formatSpinner;
+    private AddItemActivity parentActivity;
 
     /**
      * Use this factory method to create a new instance of
@@ -46,6 +48,7 @@ public class AddBookFragment extends Fragment implements Jsonable, AddItemActivi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        parentActivity = (AddItemActivity)getActivity();
     }
 
     @Override
@@ -63,22 +66,14 @@ public class AddBookFragment extends Fragment implements Jsonable, AddItemActivi
         formatSpinner.setAdapter(new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, PrintFormat.values()));
         return view;
     }
-/*
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-*/
     private Book createBook(){
         Book book = new Book();
+        book.setUserEmail(parentActivity.mEmail);
         book.setTitle(mTitleTextView.getText().toString());
         book.setAuthor(mAuthorTextView.getText().toString());
         book.setPublisher(mPublisherTextView.getText().toString());
+        //TODO Check ISBN format input
         book.setIsbn(mIsbnTextView.getText().toString());
         book.setFormat((PrintFormat) formatSpinner.getSelectedItem());
         book.setIsRead(mIsRead.isActivated());

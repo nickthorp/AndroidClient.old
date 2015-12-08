@@ -25,6 +25,7 @@ public class AddTabletopFragment extends Fragment implements Jsonable, AddItemAc
     private AutoCompleteTextView mTitleTextView;
     private Spinner mFormatSpinner;
     private AutoCompleteTextView mMinTextView, mMaxTextView;
+    private AddItemActivity parentActivity;
 
     public AddTabletopFragment() {
         // Required empty public constructor
@@ -44,6 +45,7 @@ public class AddTabletopFragment extends Fragment implements Jsonable, AddItemAc
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        parentActivity = (AddItemActivity)getActivity();
     }
 
     @Override
@@ -71,7 +73,9 @@ public class AddTabletopFragment extends Fragment implements Jsonable, AddItemAc
 
     public TableTopGame createTableTop() throws NumberFormatException {
         TableTopGame tableTopGame = new TableTopGame();
+        tableTopGame.setUserEmail(parentActivity.mEmail);
         tableTopGame.setGameTitle(mTitleTextView.getText().toString());
+        //TODO set input logic for num players, including that max must be <= to min and < 0
         tableTopGame.setMinPlayers(Integer.parseInt(mMinTextView.getText().toString()));
         tableTopGame.setMaxPlayers(Integer.parseInt(mMaxTextView.getText().toString()));
         tableTopGame.setStyle((TableTopFormat)mFormatSpinner.getSelectedItem());

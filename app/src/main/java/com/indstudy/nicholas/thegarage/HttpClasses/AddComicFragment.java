@@ -27,6 +27,7 @@ public class AddComicFragment extends Fragment implements Jsonable, AddItemActiv
             mArtistTextView, mPublisherTextView, mVolumeTextView;
     private Spinner mSpinner;
     private CheckBox mIsRead, mIsReading;
+    private AddItemActivity parentActivity;
 
     public AddComicFragment() {
         // Required empty public constructor
@@ -46,6 +47,7 @@ public class AddComicFragment extends Fragment implements Jsonable, AddItemActiv
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        parentActivity = (AddItemActivity)getActivity();
     }
 
     @Override
@@ -65,22 +67,14 @@ public class AddComicFragment extends Fragment implements Jsonable, AddItemActiv
         return view;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
     private Comic createComic() throws NumberFormatException {
         Comic comic = new Comic();
+        comic.setUserEmail(parentActivity.mEmail);
         comic.setTitle(mTitleTextView.getText().toString());
         comic.setAuthor(mAuthorTextView.getText().toString());
         comic.setPublisher(mPublisherTextView.getText().toString());
         comic.setArtist(mArtistTextView.getText().toString());
+        //TODO Handle this volume exception
         comic.setVolume(Integer.parseInt(mVolumeTextView.getText().toString()));
         comic.setFormat((PrintFormat) mSpinner.getSelectedItem());
         comic.setIsRead(mIsRead.isActivated());

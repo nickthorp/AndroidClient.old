@@ -31,9 +31,11 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
     private AutoCompleteTextView mReleaseTextView, mSeasonTextView;
     private CheckBox mIsRead, mIsReading;
     private RadioGroup mRadioGroup;
-    private RadioButton mMovie, mTvSeries;
+    //TODO are these necessary?
+    // private RadioButton mMovie, mTvSeries;
     private Spinner formatSpinner, tvFormatSpinner;
     private LinearLayout movieLayout, tvLayout;
+    private AddItemActivity parentActivity;
 
     public AddMovieTvFragment() {
         // Required empty public constructor
@@ -51,6 +53,7 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        parentActivity = (AddItemActivity)getActivity();
     }
 
     @Override
@@ -73,8 +76,9 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
                 }
             }
         });
-        mMovie = (RadioButton)view.findViewById(R.id.movie_radio_button);
-        mTvSeries = (RadioButton)view.findViewById(R.id.tv_radio_button);
+        //TODO which would get rid of these too.
+        // mMovie = (RadioButton)view.findViewById(R.id.movie_radio_button);
+        // mTvSeries = (RadioButton)view.findViewById(R.id.tv_radio_button);
         mTitleTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_title);
         mDirectorTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_director);
         mReleaseTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_release_year);
@@ -90,36 +94,28 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
         return view;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    private Movie createMovie() throws NullPointerException {
+    private Movie createMovie() throws NumberFormatException {
         Movie movie = new Movie();
-        movie.setUserEmail("foo@example.com"); //TODO: Fix userEmail setting logic
+        movie.setUserEmail(parentActivity.mEmail);
         movie.setTitle(mTitleTextView.getText().toString());
         movie.setDirector(mDirectorTextView.getText().toString());
         movie.setFormat((VideoFormat) formatSpinner.getSelectedItem());
+        //TODO handle this release year input
         movie.setReleaseYear(Integer.parseInt(mReleaseTextView.getText().toString()));
         movie.setWatched(mIsRead.isActivated());
         movie.setWatching(mIsReading.isActivated());
         return movie;
     }
 
-    private TelevisionSeries createTVSeries() throws NullPointerException {
+    private TelevisionSeries createTVSeries() throws NumberFormatException {
         TelevisionSeries televisionSeries = new TelevisionSeries();
-        televisionSeries.setUserEmail("foo@example.com"); //TODO: Fix userEmail setting logic
+        televisionSeries.setUserEmail(parentActivity.mEmail);
         televisionSeries.setTitle(mTitleTextView.getText().toString());
         televisionSeries.setDirector(mDirectorTextView.getText().toString());
         televisionSeries.setFormat((VideoFormat) tvFormatSpinner.getSelectedItem());
+        //TODO check season input
         televisionSeries.setSeason( Integer.parseInt( mSeasonTextView.getText().toString() ) );
+        //TODO check release year input
         televisionSeries.setReleaseYear(Integer.parseInt(mReleaseTextView.getText().toString()));
         televisionSeries.setWatched(mIsRead.isActivated());
         televisionSeries.setWatching(mIsReading.isActivated());
