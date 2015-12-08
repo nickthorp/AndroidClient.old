@@ -29,8 +29,9 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
     private Items itemType;
     private String mTitle, json;
     private final String[] titles = {"Home", "Books", "Comics & Graphic Novels", "Movies & TV Series",
-        "Music", "Tabletop Games", "Video Games"};
+            "Music", "Tabletop Games", "Video Games"};
     private Spinner spinner;
+    FloatingActionButton fab;
     Fragment mFragment = null;
     private FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -45,25 +46,30 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
         Bundle bundle = intent.getExtras();
         mTitle = bundle.getString("title");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    json = ((OnSubmitButtonClickedListener)mFragment).onSubmitClicked();
+                try {
+                    json = ((OnSubmitButtonClickedListener) mFragment).onSubmitClicked();
                     try {
                         new HttpASyncTask().execute(buildUrl());
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
                     Toast.makeText(getApplicationContext(), json, Toast.LENGTH_LONG).show();
-                }catch (ClassCastException cce){
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter numbers!", Toast.LENGTH_LONG).show();
+                } catch (NullPointerException e) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please fill form completely", Toast.LENGTH_LONG).show();
+                } catch (ClassCastException cce) {
                     cce.printStackTrace();
                 }
             }
         });
 
-        spinner = (Spinner)findViewById(R.id.add_item_spinner);
+        spinner = (Spinner) findViewById(R.id.add_item_spinner);
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.add_item_spinner_list, android.R.layout.simple_spinner_item);
@@ -84,66 +90,97 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
         setItemType(0);
     }
 
-    public void determineItem(){
-        switch (mTitle){
-            case "Home": spinner.setSelection(0);
-                setItemType(0); updateActionBar();
+    public void determineItem() {
+        switch (mTitle) {
+            case "Home":
+                spinner.setSelection(0);
+                setItemType(0);
+                updateActionBar();
                 itemType = null;
                 break;
-            case "Books": spinner.setSelection(1);
-                setItemType(1); updateActionBar();
+            case "Books":
+                spinner.setSelection(1);
+                setItemType(1);
+                updateActionBar();
                 itemType = Items.BOOK;
                 break;
-            case "Comics & Graphic Novels": spinner.setSelection(2);
-                setItemType(2); updateActionBar();
+            case "Comics & Graphic Novels":
+                spinner.setSelection(2);
+                setItemType(2);
+                updateActionBar();
                 itemType = Items.COMIC;
                 break;
-            case "Movies & TV Series": spinner.setSelection(3);
-                setItemType(3); updateActionBar();
+            case "Movies & TV Series":
+                spinner.setSelection(3);
+                setItemType(3);
+                updateActionBar();
                 itemType = Items.MOVIETV;
                 break;
-            case "Music": spinner.setSelection(4);
-                setItemType(4); updateActionBar();
+            case "Music":
+                spinner.setSelection(4);
+                setItemType(4);
+                updateActionBar();
                 itemType = Items.MUSIC;
                 break;
-            case "Tabletop Games": spinner.setSelection(5);
-                setItemType(5); updateActionBar();
+            case "Tabletop Games":
+                spinner.setSelection(5);
+                setItemType(5);
+                updateActionBar();
                 itemType = Items.TABLETOP;
                 break;
-            case "Video Games": spinner.setSelection(6);
-                setItemType(6); updateActionBar();
+            case "Video Games":
+                spinner.setSelection(6);
+                setItemType(6);
+                updateActionBar();
                 itemType = Items.VIDEOGAME;
                 break;
         }
     }
 
-    public void setItemType(int position){
+    public void setItemType(int position) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        switch (position){
-            case 0: if(mFragment != null)
-                fragmentTransaction.remove(mFragment);
+        switch (position) {
+            case 0:
+                if (mFragment != null)
+                    fragmentTransaction.remove(mFragment);
+                fab.setVisibility(View.GONE);
                 break;
-            case 1: mFragment = AddBookFragment.newInstance();
+            case 1:
+                mFragment = AddBookFragment.newInstance();
                 fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
+                fab.setVisibility(View.VISIBLE);
                 break;
-            case 2: mFragment = AddComicFragment.newInstance();
+            case 2:
+                mFragment = AddComicFragment.newInstance();
                 fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
+                fab.setVisibility(View.VISIBLE);
                 break;
-            case 3: mFragment = AddMovieTvFragment.newInstance();
+            case 3:
+                mFragment = AddMovieTvFragment.newInstance();
                 fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
+                fab.setVisibility(View.VISIBLE);
                 break;
             case 4:
+                mFragment = AddMusicFragment.newInstance();
+                fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
+                fab.setVisibility(View.VISIBLE);
                 break;
             case 5:
+                mFragment = AddTabletopFragment.newInstance();
+                fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
+                fab.setVisibility(View.VISIBLE);
                 break;
             case 6:
+                mFragment = AddVideoGameFragment.newInstance();
+                fragmentTransaction.replace(R.id.add_item_empty_layout, mFragment);
+                fab.setVisibility(View.VISIBLE);
                 break;
         }
         fragmentTransaction.addToBackStack(null).commit();
     }
 
-    public void updateActionBar(){
+    public void updateActionBar() {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle("Add " + mTitle);
@@ -152,34 +189,40 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
         }
     }
 
-    public interface OnSubmitButtonClickedListener{
+    public interface OnSubmitButtonClickedListener {
         String onSubmitClicked();
     }
 
     private URL buildUrl() throws MalformedURLException {
         String BASE_URL = "http://10.0.2.2:8080/TheArchive/";
         String type = null;
-        switch (itemType){
-            case BOOK: type = "books";
+        switch (itemType) {
+            case BOOK:
+                type = "books";
                 break;
-            case COMIC: type = "comics";
+            case COMIC:
+                type = "comics";
                 break;
-            case MOVIETV: type = "moviestv";
+            case MOVIETV:
+                type = "movies";
                 break;
-            case MUSIC: type = "music";
+            case MUSIC:
+                type = "music";
                 break;
-            case TABLETOP: type = "tabletops";
+            case TABLETOP:
+                type = "tabletop";
                 break;
-            case VIDEOGAME: type = "videogames";
+            case VIDEOGAME:
+                type = "videogames";
         }
         return new URL(BASE_URL + type);
     }
 
-    private String Post(URL url){
+    private String Post(URL url) {
         StringBuilder result = new StringBuilder();
         HttpURLConnection httpURLConnection = null;
-        try{
-            httpURLConnection = (HttpURLConnection)url.openConnection();
+        try {
+            httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
             httpURLConnection.setRequestProperty("Content-Type", "application/json");

@@ -1,24 +1,37 @@
 package com.indstudy.nicholas.thegarage.LibraryObjects;
 
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.VideoGameFormat;
+
 /**
  * Created by Nicholas on 10/24/2015.
  */
 public class VideoGame {
+    private int itemId;
+    private String userEmail;
     private String title;
-    private Platform platform;
+    private VideoGameFormat format;
+    private Boolean isPlayed;
     private Boolean isPlaying;
+    private Boolean isCompleted;
     private String developer;
+    private String link;
 
-    public VideoGame(){
+    public VideoGame(){}
+
+    public int getItemId() {
+        return itemId;
     }
 
-    public VideoGame(String title){
-        this.title = title;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
-    public VideoGame(String title, Platform platform){
-        this.title = title;
-        this.platform = platform;
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getTitle() {
@@ -29,20 +42,28 @@ public class VideoGame {
         this.title = title;
     }
 
-    public Platform getPlatform() {
-        return platform;
+    public VideoGameFormat getFormat() {
+        return format;
     }
 
-    public void setPlatform(Platform platform) {
-        this.platform = platform;
+    public void setFormat(VideoGameFormat format) {
+        this.format = format;
     }
 
-    public Boolean getIsPlaying() {
+    public Boolean getPlayed() {
+        return isPlayed;
+    }
+
+    public void setPlayed(Boolean played) {
+        isPlayed = played;
+    }
+
+    public Boolean getPlaying() {
         return isPlaying;
     }
 
-    public void setIsPlaying(Boolean isPlaying) {
-        this.isPlaying = isPlaying;
+    public void setPlaying(Boolean playing) {
+        isPlaying = playing;
     }
 
     public String getDeveloper() {
@@ -53,7 +74,23 @@ public class VideoGame {
         this.developer = developer;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
     public String toString(){
-        return title + " (" + platform + ")";
+        return title + " (" + format + ")";
+    }
+
+    public Boolean getIsCompleted() {
+        return isCompleted;
+    }
+
+    public void setIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
 }

@@ -1,5 +1,7 @@
 package com.indstudy.nicholas.thegarage.LibraryObjects;
 
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.PrintFormat;
+
 /**
  * Created by Nicholas on 10/23/2015.
  */
@@ -9,7 +11,7 @@ public class Comic {
     private String title;
     private String author;
     private String artist;
-    private String volume;
+    private int volume;
     private String publisher;
     private PrintFormat format;
     private Boolean isRead;
@@ -90,11 +92,11 @@ public class Comic {
         this.userEmail = userEmail;
     }
 
-    public String getVolume() {
+    public int getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
+    public void setVolume(int volume) {
         this.volume = volume;
     }
 

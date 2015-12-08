@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.indstudy.nicholas.thegarage.LibraryObjects.Platform;
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.VideoGameFormat;
 import com.indstudy.nicholas.thegarage.LibraryObjects.VideoGame;
 import com.indstudy.nicholas.thegarage.MainActivity;
 import com.indstudy.nicholas.thegarage.R;
@@ -52,8 +52,6 @@ public class VideoGamesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         videoGames = new ArrayList<>();
-        videoGames.add(new VideoGame("Final Fantasy", Platform.PC));
-        videoGames.add(new VideoGame("Call of Duty", Platform.PS3));
     }
 
     @Override

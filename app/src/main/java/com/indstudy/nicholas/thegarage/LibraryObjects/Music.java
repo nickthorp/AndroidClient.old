@@ -2,6 +2,8 @@ package com.indstudy.nicholas.thegarage.LibraryObjects;
 
 import android.media.Image;
 
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.AudioFormat;
+
 import java.util.ArrayList;
 
 /**
@@ -10,8 +12,9 @@ import java.util.ArrayList;
 public class Music {
     private String artistName;
     private String albumTitle;
-    private ArrayList<String> songTitles;
-    private Image albumArt;
+    //private ArrayList<String> songTitles;
+    //private Image albumArt;
+    private AudioFormat format;
     private Boolean isListening;
 
     public Music(){}
@@ -20,12 +23,12 @@ public class Music {
         this.albumTitle = albumTitle;
         this.artistName = artistName;
     }
-
+/*
     private void numberSongTitles(){
         for(int i = 0; i < songTitles.size()-1; i++)
             songTitles.set(i, i + ": " + songTitles.get(i));
     }
-
+*/
     public String getArtistName() {
         return artistName;
     }
@@ -41,7 +44,7 @@ public class Music {
     public void setAlbumTitle(String albumTitle) {
         this.albumTitle = albumTitle;
     }
-
+/*
     public ArrayList<String> getSongTitles() {
         numberSongTitles();
         return songTitles;
@@ -58,7 +61,7 @@ public class Music {
     public void setAlbumArt(Image albumArt) {
         this.albumArt = albumArt;
     }
-
+*/
     public Boolean getIsListening() {
         return isListening;
     }
@@ -69,5 +72,13 @@ public class Music {
 
     public String toString(){
         return albumTitle + " by " + artistName;
+    }
+
+    public AudioFormat getFormat() {
+        return format;
+    }
+
+    public void setFormat(AudioFormat format) {
+        this.format = format;
     }
 }

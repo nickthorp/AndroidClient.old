@@ -106,18 +106,26 @@
 
     <!-- Strings for Item addition forms -->
     <string name="prompt_title">Title</string>
+    <string name="prompt_album_title">Album Title</string>
     <string name="prompt_author">Author</string>
     <string name="prompt_publisher">Publisher</string>
     <string name="prompt_isbn">ISBN</string>
     <string name="prompt_format">Format</string>
-    <string name="prompt_is_read">Completed: </string>
-    <string name="prompt_is_reading">In Progress: </string>
+    <string name="prompt_is_read">Completed </string>
+    <string name="prompt_is_reading">In Progress </string>
+    <string name="prompt_is_listening">Currently Listening</string>
     <string name="prompt_artist">Artist</string>
     <string name="prompt_volume">Volume: </string>
     <string name="label_movie">Movie</string>
     <string name="label_tv_series">TV Series</string>
+    <string name="label_played">Played</string>
+    <string name="label_playing">Now Playing</string>
+    <string name="label_completed">Completed</string>
     <string name="prompt_release_year">Release Year</string>
     <string name="prompt_director">Director</string>
     <string name="prompt_season">Season</string>
+    <string name="prompt_minimum">Minimum Players</string>
+    <string name="prompt_maximum">Maximum Players</string>
+    <string name="prompt_developer">Developer</string>
 
 </resources>

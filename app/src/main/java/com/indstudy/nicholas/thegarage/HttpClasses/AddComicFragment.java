@@ -1,7 +1,6 @@
 package com.indstudy.nicholas.thegarage.HttpClasses;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,7 +13,7 @@ import android.widget.Spinner;
 
 import com.google.gson.Gson;
 import com.indstudy.nicholas.thegarage.LibraryObjects.Comic;
-import com.indstudy.nicholas.thegarage.LibraryObjects.PrintFormat;
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.PrintFormat;
 import com.indstudy.nicholas.thegarage.R;
 
 /**
@@ -76,15 +75,13 @@ public class AddComicFragment extends Fragment implements Jsonable, AddItemActiv
         super.onDetach();
     }
 
-    private Comic createComic(){
+    private Comic createComic() throws NumberFormatException {
         Comic comic = new Comic();
-        comic.setItemId(333);
-        comic.setUserEmail("foo@example.com");
         comic.setTitle(mTitleTextView.getText().toString());
         comic.setAuthor(mAuthorTextView.getText().toString());
         comic.setPublisher(mPublisherTextView.getText().toString());
         comic.setArtist(mArtistTextView.getText().toString());
-        comic.setVolume(mVolumeTextView.getText().toString());
+        comic.setVolume(Integer.parseInt(mVolumeTextView.getText().toString()));
         comic.setFormat((PrintFormat) mSpinner.getSelectedItem());
         comic.setIsRead(mIsRead.isActivated());
         comic.setIsReading(mIsReading.isActivated());

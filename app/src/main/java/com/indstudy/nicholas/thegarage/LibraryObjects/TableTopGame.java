@@ -1,5 +1,7 @@
 package com.indstudy.nicholas.thegarage.LibraryObjects;
 
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.TableTopFormat;
+
 /**
  * Created by Nicholas on 10/24/2015.
  */
@@ -7,7 +9,7 @@ public class TableTopGame {
     private String title;
     private int minPlayers;
     private int maxPlayers;
-    private TableTopStyle style;
+    private TableTopFormat style;
 
     public TableTopGame() {
     }
@@ -40,11 +42,11 @@ public class TableTopGame {
         this.maxPlayers = maxPlayers;
     }
 
-    public TableTopStyle getStyle() {
+    public TableTopFormat getStyle() {
         return style;
     }
 
-    public void setStyle(TableTopStyle style) {
+    public void setStyle(TableTopFormat style) {
         this.style = style;
     }
 

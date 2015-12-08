@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 
 import com.indstudy.nicholas.thegarage.LibraryObjects.Book;
-import com.indstudy.nicholas.thegarage.LibraryObjects.PrintFormat;
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.PrintFormat;
 import com.indstudy.nicholas.thegarage.R;
 
 /**
@@ -76,13 +76,10 @@ public class AddBookFragment extends Fragment implements Jsonable, AddItemActivi
 */
     private Book createBook(){
         Book book = new Book();
-        book.setItemId(333);
-        book.setUserEmail("foo@example.com");
         book.setTitle(mTitleTextView.getText().toString());
         book.setAuthor(mAuthorTextView.getText().toString());
         book.setPublisher(mPublisherTextView.getText().toString());
         book.setIsbn(mIsbnTextView.getText().toString());
-        book.setEdition(1);
         book.setFormat((PrintFormat) formatSpinner.getSelectedItem());
         book.setIsRead(mIsRead.isActivated());
         book.setIsReading(mIsReading.isActivated());

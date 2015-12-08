@@ -1,5 +1,7 @@
 package com.indstudy.nicholas.thegarage.LibraryObjects;
 
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.VideoFormat;
+
 /**
  * Created by Nicholas on 10/23/2015.
  */

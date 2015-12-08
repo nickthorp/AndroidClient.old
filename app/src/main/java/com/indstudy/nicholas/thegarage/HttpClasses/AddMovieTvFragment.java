@@ -17,7 +17,7 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 import com.indstudy.nicholas.thegarage.LibraryObjects.Movie;
 import com.indstudy.nicholas.thegarage.LibraryObjects.TelevisionSeries;
-import com.indstudy.nicholas.thegarage.LibraryObjects.VideoFormat;
+import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.VideoFormat;
 import com.indstudy.nicholas.thegarage.R;
 
 /**
@@ -32,7 +32,7 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
     private CheckBox mIsRead, mIsReading;
     private RadioGroup mRadioGroup;
     private RadioButton mMovie, mTvSeries;
-    private Spinner formatSpinner;
+    private Spinner formatSpinner, tvFormatSpinner;
     private LinearLayout movieLayout, tvLayout;
 
     public AddMovieTvFragment() {
@@ -82,7 +82,11 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
         mIsRead = (CheckBox)view.findViewById(R.id.add_movie_tv_read_checkbox);
         mIsReading = (CheckBox)view.findViewById(R.id.add_movie_tv_reading_checkbox);
         formatSpinner = (Spinner)view.findViewById(R.id.add_movie_tv_format_spinner);
-        formatSpinner.setAdapter(new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, VideoFormat.values()));
+        formatSpinner.setAdapter(new ArrayAdapter<>(view.getContext(),
+                android.R.layout.simple_spinner_item, VideoFormat.values()));
+        tvFormatSpinner = (Spinner)view.findViewById(R.id.add_tv_format_spinner);
+        tvFormatSpinner.setAdapter(new ArrayAdapter<>(view.getContext(),
+                android.R.layout.simple_spinner_item, VideoFormat.values()));
         return view;
     }
 
@@ -97,7 +101,7 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
         super.onDetach();
     }
 
-    private Movie createMovie(){
+    private Movie createMovie() throws NullPointerException {
         Movie movie = new Movie();
         movie.setUserEmail("foo@example.com"); //TODO: Fix userEmail setting logic
         movie.setTitle(mTitleTextView.getText().toString());
@@ -109,12 +113,12 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
         return movie;
     }
 
-    private TelevisionSeries createTVSeries(){
+    private TelevisionSeries createTVSeries() throws NullPointerException {
         TelevisionSeries televisionSeries = new TelevisionSeries();
         televisionSeries.setUserEmail("foo@example.com"); //TODO: Fix userEmail setting logic
         televisionSeries.setTitle(mTitleTextView.getText().toString());
         televisionSeries.setDirector(mDirectorTextView.getText().toString());
-        televisionSeries.setFormat((VideoFormat) formatSpinner.getSelectedItem());
+        televisionSeries.setFormat((VideoFormat) tvFormatSpinner.getSelectedItem());
         televisionSeries.setSeason( Integer.parseInt( mSeasonTextView.getText().toString() ) );
         televisionSeries.setReleaseYear(Integer.parseInt(mReleaseTextView.getText().toString()));
         televisionSeries.setWatched(mIsRead.isActivated());

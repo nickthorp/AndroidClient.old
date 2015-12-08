@@ -1,13 +1,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:layout_below="@+id/add_item_spinner" android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/add_item_spinner"
+    android:orientation="vertical"
     tools:context="com.indstudy.nicholas.thegarage.HttpClasses.AddComicFragment">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <AutoCompleteTextView android:id="@+id/add_comic_title"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/add_comic_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_title"
@@ -18,8 +22,10 @@
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <AutoCompleteTextView android:id="@+id/add_comic_author"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/add_comic_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_author"
@@ -31,7 +37,9 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <AutoCompleteTextView android:id="@+id/add_comic_artist"
+
+        <AutoCompleteTextView
+            android:id="@+id/add_comic_artist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_artist"
@@ -43,7 +51,9 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <AutoCompleteTextView android:id="@+id/add_comic_publisher"
+
+        <AutoCompleteTextView
+            android:id="@+id/add_comic_publisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_publisher"
@@ -55,36 +65,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="3">
+
         <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <AutoCompleteTextView android:id="@+id/add_comic_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/add_comic_volume"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="@string/prompt_volume"
-                android:inputType="textAutoCorrect"
-                android:minEms="4" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
-        <Spinner android:id="@+id/add_comic_format_spinner"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
+
+        <Spinner
+            android:id="@+id/add_comic_format_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:padding="15dp" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <TextView android:text="@string/prompt_is_read"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:padding="15dp"/>
-        <CheckBox android:id="@+id/add_comic_read_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/add_comic_read_checkbox"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView android:text="@string/prompt_is_reading"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:padding="15dp"/>
-        <CheckBox android:id="@+id/add_comic_reading_checkbox"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_is_read"
+            android:paddingLeft="15dp" />
+
+        <CheckBox
+            android:id="@+id/add_comic_reading_checkbox"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_is_reading"
+            android:paddingLeft="15dp" />
     </LinearLayout>
 
 </LinearLayout>

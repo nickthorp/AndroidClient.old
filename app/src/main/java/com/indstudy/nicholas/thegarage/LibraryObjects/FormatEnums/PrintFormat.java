@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage.LibraryObjects;
+package com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums;
 
 /**
  * Created by Nicholas on 10/19/2015.
