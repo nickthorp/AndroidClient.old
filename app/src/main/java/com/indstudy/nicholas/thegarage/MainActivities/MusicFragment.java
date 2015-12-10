@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage.MainFragments;
+package com.indstudy.nicholas.thegarage.MainActivities;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -11,8 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.indstudy.nicholas.thegarage.LibraryObjects.Comic;
-import com.indstudy.nicholas.thegarage.MainActivity;
+import com.indstudy.nicholas.thegarage.LibraryObjects.Music;
 import com.indstudy.nicholas.thegarage.R;
 
 import java.util.ArrayList;
@@ -21,14 +20,14 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ComicsFragment.OnFragmentInteractionListener} interface
+ * {@link MusicFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ComicsFragment#newInstance} factory method to
+ * Use the {@link MusicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ComicsFragment extends Fragment {
+public class MusicFragment extends Fragment {
 
-    private ArrayList<Comic> comics;
+    private ArrayList<Music> music;
     private ArrayAdapter mListAdapter;
     private TextView textViewTotal, textViewIP;
     private OnFragmentInteractionListener mListener;
@@ -36,36 +35,37 @@ public class ComicsFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment ComicsFragment.
+     * @return A new instance of fragment MusicFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ComicsFragment newInstance() {
-        return new ComicsFragment();
+    public static MusicFragment newInstance() {
+        return new MusicFragment();
     }
 
-    public ComicsFragment() {
+    public MusicFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        comics = new ArrayList<>();
-        comics.add(new Comic("X-Men", "Stan Lee"));
+        music = new ArrayList<>();
+        music.add(new Music("Trainwreck", "Boys Night Out"));
+        music.add(new Music("Fortress", "Protest the Hero"));
+        music.add(new Music("Unforgettable", "Nat King Cole"));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_comics, container, false);
-        ListView listView = (ListView)view.findViewById(R.id.comics_listView);
-        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item, R.id.empty_textView, comics);
+        View view = inflater.inflate(R.layout.fragment_music, container, false);
+        ListView listView = (ListView)view.findViewById(R.id.music_listView);
+        mListAdapter = new ArrayAdapter<>(getActivity(), R.layout.simple_list_item, R.id.empty_textView, music);
         listView.setAdapter(mListAdapter);
-        textViewTotal = (TextView) view.findViewById(R.id.comics_total_text_view);
-        textViewTotal.setText(Integer.toString(comics.size()));
-        textViewIP = (TextView) view.findViewById(R.id.comics_IP_text_view);
+        textViewTotal = (TextView) view.findViewById(R.id.music_total_text_view);
+        textViewTotal.setText(Integer.toString(music.size()));
+        textViewIP = (TextView) view.findViewById(R.id.music_IP_text_view);
         textViewIP.setText("");
         return view;
     }
@@ -80,7 +80,7 @@ public class ComicsFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(R.id.nav_comics);
+        ((MainActivity) activity).onSectionAttached(R.id.nav_music);
     }
 
     @Override

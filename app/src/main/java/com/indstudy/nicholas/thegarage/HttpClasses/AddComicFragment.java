@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
+import com.indstudy.nicholas.thegarage.InputException;
 import com.indstudy.nicholas.thegarage.LibraryObjects.Comic;
 import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.PrintFormat;
 import com.indstudy.nicholas.thegarage.R;
@@ -67,15 +68,16 @@ public class AddComicFragment extends Fragment implements Jsonable, AddItemActiv
         return view;
     }
 
-    private Comic createComic() throws NumberFormatException {
+    private Comic createComic() throws InputException {
         Comic comic = new Comic();
         comic.setUserEmail(parentActivity.mEmail);
         comic.setTitle(mTitleTextView.getText().toString());
         comic.setAuthor(mAuthorTextView.getText().toString());
         comic.setPublisher(mPublisherTextView.getText().toString());
         comic.setArtist(mArtistTextView.getText().toString());
-        //TODO Handle this volume exception
         comic.setVolume(Integer.parseInt(mVolumeTextView.getText().toString()));
+        if ( comic.getVolume() <= 0 )
+            throw new InputException("Enter a valid volume number!");
         comic.setFormat((PrintFormat) mSpinner.getSelectedItem());
         comic.setIsRead(mIsRead.isActivated());
         comic.setIsReading(mIsReading.isActivated());
@@ -83,13 +85,13 @@ public class AddComicFragment extends Fragment implements Jsonable, AddItemActiv
     }
 
     @Override
-    public String createJson(){
+    public String createJson() throws InputException {
         Gson gson = new Gson();
         return gson.toJson(createComic());
     }
 
     @Override
-    public String onSubmitClicked() {
+    public String onSubmitClicked() throws InputException {
         return createJson();
     }
 }

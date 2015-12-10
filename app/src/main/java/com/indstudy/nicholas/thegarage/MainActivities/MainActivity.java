@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage;
+package com.indstudy.nicholas.thegarage.MainActivities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -18,7 +18,7 @@ import android.view.View;
 
 import com.indstudy.nicholas.thegarage.HttpClasses.AddItemActivity;
 import com.indstudy.nicholas.thegarage.LibraryObjects.User;
-import com.indstudy.nicholas.thegarage.MainFragments.*;
+import com.indstudy.nicholas.thegarage.R;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    // TODO: Integrate Fragments into this Main Activity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -200,6 +199,7 @@ public class MainActivity extends AppCompatActivity
         return result;
     }
 
+    //TODO Implement get for all the item types for user
     private class HttpASyncTask extends AsyncTask<URL, Void, String> {
         @Override
         protected String doInBackground(URL... urls) {

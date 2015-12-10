@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
+import com.indstudy.nicholas.thegarage.InputException;
 import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.TableTopFormat;
 import com.indstudy.nicholas.thegarage.LibraryObjects.TableTopGame;
 import com.indstudy.nicholas.thegarage.R;
@@ -71,25 +72,28 @@ public class AddTabletopFragment extends Fragment implements Jsonable, AddItemAc
         super.onDetach();
     }
 
-    public TableTopGame createTableTop() throws NumberFormatException {
+    public TableTopGame createTableTop() throws InputException {
         TableTopGame tableTopGame = new TableTopGame();
         tableTopGame.setUserEmail(parentActivity.mEmail);
         tableTopGame.setGameTitle(mTitleTextView.getText().toString());
         //TODO set input logic for num players, including that max must be <= to min and < 0
         tableTopGame.setMinPlayers(Integer.parseInt(mMinTextView.getText().toString()));
         tableTopGame.setMaxPlayers(Integer.parseInt(mMaxTextView.getText().toString()));
+        int min = tableTopGame.getMinPlayers(), max = tableTopGame.getMaxPlayers();
+        if ((min <= 0 || max <= 0) || (max < min) )
+            throw new InputException("Enter valid player numbers!");
         tableTopGame.setStyle((TableTopFormat)mFormatSpinner.getSelectedItem());
         return tableTopGame;
     }
 
     @Override
-    public String createJson() {
+    public String createJson() throws InputException {
         Gson gson = new Gson();
         return gson.toJson(createTableTop());
     }
 
     @Override
-    public String onSubmitClicked() {
+    public String onSubmitClicked() throws InputException {
         return createJson();
     }
 }

@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
+import com.indstudy.nicholas.thegarage.InputException;
 import com.indstudy.nicholas.thegarage.Items;
 import com.indstudy.nicholas.thegarage.R;
 
@@ -60,11 +61,9 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
                         e.printStackTrace();
                     }
                     Toast.makeText(getApplicationContext(), json, Toast.LENGTH_LONG).show();
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Enter numbers!", Toast.LENGTH_LONG).show();
-                } catch (NullPointerException e) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please fill form completely", Toast.LENGTH_LONG).show();
+                } catch (InputException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    //e.printStackTrace();
                 } catch (ClassCastException cce) {
                     cce.printStackTrace();
                 }
@@ -90,6 +89,11 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
     public void onNothingSelected(AdapterView<?> parent) {
         parent.setSelection(0);
         setItemType(0);
+    }
+
+    //TODO add a valid method here
+    public void onBackButtonPressed(){
+
     }
 
     public void determineItem() {
@@ -192,7 +196,7 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public interface OnSubmitButtonClickedListener {
-        String onSubmitClicked();
+        String onSubmitClicked() throws InputException;
     }
 
     private URL buildUrl() throws MalformedURLException {

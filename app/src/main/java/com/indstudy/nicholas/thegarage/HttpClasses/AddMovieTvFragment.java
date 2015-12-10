@@ -1,6 +1,5 @@
 package com.indstudy.nicholas.thegarage.HttpClasses;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,15 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
+import com.indstudy.nicholas.thegarage.InputException;
 import com.indstudy.nicholas.thegarage.LibraryObjects.Movie;
 import com.indstudy.nicholas.thegarage.LibraryObjects.TelevisionSeries;
 import com.indstudy.nicholas.thegarage.LibraryObjects.FormatEnums.VideoFormat;
 import com.indstudy.nicholas.thegarage.R;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,11 +29,9 @@ import com.indstudy.nicholas.thegarage.R;
 public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemActivity.OnSubmitButtonClickedListener {
 
     private AutoCompleteTextView mTitleTextView, mDirectorTextView;
-    private AutoCompleteTextView mReleaseTextView, mSeasonTextView;
+    private AutoCompleteTextView mMovieReleaseTextView, mTvReleaseTextView, mSeasonTextView;
     private CheckBox mIsRead, mIsReading;
     private RadioGroup mRadioGroup;
-    //TODO are these necessary?
-    // private RadioButton mMovie, mTvSeries;
     private Spinner formatSpinner, tvFormatSpinner;
     private LinearLayout movieLayout, tvLayout;
     private AddItemActivity parentActivity;
@@ -76,12 +75,10 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
                 }
             }
         });
-        //TODO which would get rid of these too.
-        // mMovie = (RadioButton)view.findViewById(R.id.movie_radio_button);
-        // mTvSeries = (RadioButton)view.findViewById(R.id.tv_radio_button);
         mTitleTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_title);
         mDirectorTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_director);
-        mReleaseTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_release_year);
+        mMovieReleaseTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_release_year);
+        mTvReleaseTextView = (AutoCompleteTextView)view.findViewById(R.id.add_tv_release_year);
         mSeasonTextView = (AutoCompleteTextView)view.findViewById(R.id.add_movie_tv_season);
         mIsRead = (CheckBox)view.findViewById(R.id.add_movie_tv_read_checkbox);
         mIsReading = (CheckBox)view.findViewById(R.id.add_movie_tv_reading_checkbox);
@@ -94,36 +91,41 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
         return view;
     }
 
-    private Movie createMovie() throws NumberFormatException {
+    private Movie createMovie() throws InputException {
         Movie movie = new Movie();
         movie.setUserEmail(parentActivity.mEmail);
         movie.setTitle(mTitleTextView.getText().toString());
         movie.setDirector(mDirectorTextView.getText().toString());
         movie.setFormat((VideoFormat) formatSpinner.getSelectedItem());
-        //TODO handle this release year input
-        movie.setReleaseYear(Integer.parseInt(mReleaseTextView.getText().toString()));
+        movie.setReleaseYear(Integer.parseInt(mMovieReleaseTextView.getText().toString()));
+        int releaseYear = movie.getReleaseYear();
+        if (releaseYear < 1889 || releaseYear > Calendar.getInstance().get(Calendar.YEAR))
+            throw new InputException("Enter valid year");
         movie.setWatched(mIsRead.isActivated());
         movie.setWatching(mIsReading.isActivated());
         return movie;
     }
 
-    private TelevisionSeries createTVSeries() throws NumberFormatException {
+    private TelevisionSeries createTVSeries() throws InputException {
         TelevisionSeries televisionSeries = new TelevisionSeries();
         televisionSeries.setUserEmail(parentActivity.mEmail);
         televisionSeries.setTitle(mTitleTextView.getText().toString());
         televisionSeries.setDirector(mDirectorTextView.getText().toString());
         televisionSeries.setFormat((VideoFormat) tvFormatSpinner.getSelectedItem());
-        //TODO check season input
-        televisionSeries.setSeason( Integer.parseInt( mSeasonTextView.getText().toString() ) );
-        //TODO check release year input
-        televisionSeries.setReleaseYear(Integer.parseInt(mReleaseTextView.getText().toString()));
+        televisionSeries.setSeason(Integer.parseInt(mSeasonTextView.getText().toString()));
+        if (televisionSeries.getSeason() <= 0 )
+            throw new InputException("Enter a valid volume number");
+        televisionSeries.setReleaseYear(Integer.parseInt(mTvReleaseTextView.getText().toString()));
+        int releaseYear = televisionSeries.getReleaseYear();
+        if (releaseYear < 1938 || releaseYear > Calendar.getInstance().get(Calendar.YEAR))
+            throw new InputException("Enter valid year");
         televisionSeries.setWatched(mIsRead.isActivated());
         televisionSeries.setWatching(mIsReading.isActivated());
         return televisionSeries;
     }
 
     @Override
-    public String createJson(){
+    public String createJson() throws InputException {
         Gson gson = new Gson();
         if (mRadioGroup.getCheckedRadioButtonId() == R.id.movie_radio_button){
             return gson.toJson(createMovie());
@@ -133,7 +135,7 @@ public class AddMovieTvFragment extends Fragment implements Jsonable, AddItemAct
     }
 
     @Override
-    public String onSubmitClicked() {
+    public String onSubmitClicked() throws InputException {
         return createJson();
     }
 }

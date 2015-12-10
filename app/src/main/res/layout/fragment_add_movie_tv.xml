@@ -154,7 +154,7 @@
                 android:layout_weight="1">
 
                 <AutoCompleteTextView
-                    android:id="@id/add_movie_tv_release_year"
+                    android:id="@+id/add_tv_release_year"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/prompt_release_year"
@@ -171,7 +171,7 @@
                     android:id="@+id/add_movie_tv_season"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/prompt_season"
+                    android:hint="@string/prompt_volume"
                     android:inputType="number"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>

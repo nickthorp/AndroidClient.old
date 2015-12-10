@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.indstudy.nicholas.thegarage.MainFragments.VideoGamesFragment">
+    tools:context="com.indstudy.nicholas.thegarage.MainActivities.VideoGamesFragment">
     <LinearLayout
         android:layout_width="187dp" android:layout_height="wrap_content"
         android:paddingTop="16dp" android:orientation="vertical"

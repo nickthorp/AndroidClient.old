@@ -1,4 +1,4 @@
-package com.indstudy.nicholas.thegarage.MainFragments;
+package com.indstudy.nicholas.thegarage.MainActivities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.indstudy.nicholas.thegarage.LibraryObjects.Book;
-import com.indstudy.nicholas.thegarage.MainActivity;
 import com.indstudy.nicholas.thegarage.R;
 
 import java.util.ArrayList;
